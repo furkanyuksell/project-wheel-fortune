@@ -1,14 +1,9 @@
 using UnityEngine;
 
-namespace DISystem.Base
+namespace Utils.Abstract
 {
     public abstract class BaseBehaviour : MonoBehaviour
     {
-        protected virtual void Awake()
-        {
-            BindEvents();
-        }
-        
         protected virtual void OnEnable()
         {
             Register(true);
@@ -19,7 +14,6 @@ namespace DISystem.Base
             Register(false);
         }
         
-        protected virtual void BindEvents() { }
         protected virtual void Register(bool isActive) { }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using DISystem.Interfaces;
 using UnityEngine;
+using Utils.Abstract;
 
 namespace DISystem.Base
 {
