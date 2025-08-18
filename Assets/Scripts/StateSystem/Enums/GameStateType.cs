@@ -3,6 +3,12 @@ namespace StateSystem.Enums
     public enum GameStateType
     {
         None,
-        OnAppStart,
+        AppStart,
+        MainMenu,
+        LoadGameplay,
+        Play,
+        Revive,
+        GameOver,
+        
     }
 }

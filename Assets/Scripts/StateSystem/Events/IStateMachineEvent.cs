@@ -15,5 +15,14 @@ namespace StateSystem.Events
                 NewState = newState;
             }
         }
+
+        public struct OnChangeState<TStateType> : IStateMachineEvent
+        {
+            public TStateType StateType { get; }
+            public OnChangeState(TStateType stateType)
+            {
+                StateType = stateType;
+            }
+        }
     }
 }

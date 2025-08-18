@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 using DISystem.Interfaces;
+using EventBusSystem.Classes;
+using EventBusSystem.Utils;
 using UnityEngine;
+using Utils.Abstract;
 
 namespace DISystem.Base
 {
-    public abstract class BaseContext : MonoBehaviour, IContext
+    public abstract class BaseContext : BaseBehaviour, IContext
     {
         private Dictionary<Type, object> _registeredInstances;
         private bool _isInitialized = false;
 
         #region IContext Implementation
         public bool IsInitialized => _isInitialized;
-        public Action OnContextInitialized { get; set; }
         #endregion
         protected virtual void Awake()
         {
@@ -20,7 +22,7 @@ namespace DISystem.Base
             if (InitializeOnAwake())
                 Initialize();
         }
-        
+
         protected virtual bool InitializeOnAwake() => true;
 
         public void InitManual()
@@ -33,7 +35,7 @@ namespace DISystem.Base
         {
             _isInitialized = true;
             Debug.Log($"Context {GetType().Name} initialized.");
-            OnContextInitialized?.Invoke();
+            EventDispatcher.Raise(new IContextEvents.OnContextInitialized());
         }
         
         protected T InitializeContextDependent<T>(T instance) where T : class, IContextDependent

@@ -1,19 +1,20 @@
 using ComponentSystem.Base;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ComponentSystem.Components
 {
     public abstract class ButtonComponent : CustomUIComponentBase
     {
-        private Button _button;
-        private TextMeshProUGUI _textMesh;
-        protected string text;
+        [SerializeField] private Button _button;
+        [SerializeField] private TextMeshProUGUI _txtContent;
 
         protected override void Setup()
         {
-            _button = GetComponentInChildren<Button>();
-            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
+            if (!_button) _button = GetComponent<Button>();
+            if (!_txtContent) _txtContent = GetComponentInChildren<TextMeshProUGUI>();
         }
 
         protected override void Configure()
@@ -37,12 +38,11 @@ namespace ComponentSystem.Components
         
         protected virtual void SetText(string text)
         {
-            _textMesh.text = text;
+            _txtContent.text = text;
         }
 
         public void SetTextFromSO(string text)
         {
-            this.text = text;
         }
     }
 }

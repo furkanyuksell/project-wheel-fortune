@@ -1,12 +1,12 @@
 using StateSystem.Enums;
-using StateSystem.States;
 
-namespace StateSystem.Classes
+namespace StateSystem.States.GameStates
 {
-    public class AppStartState : GameState
+    public class MainMenuState : GameState
     {
-        public AppStartState() : base(GameStateType.OnAppStart)
+        public MainMenuState() : base(GameStateType.MainMenu)
         {
+            
         }
 
         public override void Start()
@@ -15,7 +15,7 @@ namespace StateSystem.Classes
         }
 
         public override void End()
-        { 
+        {
             base.End();
         }
     }

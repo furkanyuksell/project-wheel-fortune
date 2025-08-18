@@ -1,5 +1,7 @@
 using System;
 using DISystem.Interfaces;
+using EventBusSystem.Classes;
+using EventBusSystem.Utils;
 using UnityEngine;
 using Utils.Abstract;
 
@@ -7,6 +9,7 @@ namespace DISystem.Base
 {
     public abstract class ContextDependentBehaviour : BaseBehaviour, IContextDependent
     {
+        private EventBinding<IContextEvents.OnContextInitialized> _onContextInitializedBinding;
         private bool _isSubscribedToContextEvent = false;
         private IContext _context;
         public IContext Context => _context;
@@ -30,7 +33,7 @@ namespace DISystem.Base
         {
             if (_context != null && !_isSubscribedToContextEvent)
             {
-                _context.OnContextInitialized += OnContextReady;
+                _onContextInitializedBinding = EventDispatcher.Subscribe<IContextEvents.OnContextInitialized>(OnContextReady);
                 _isSubscribedToContextEvent = true;
             
                 if (_context is BaseContext baseContext && baseContext.IsInitialized)
@@ -44,11 +47,10 @@ namespace DISystem.Base
         {
             if (_context == null || !_isSubscribedToContextEvent) return;
             
-            _context.OnContextInitialized -= OnContextReady;
+            EventDispatcher.Unsubscribe(_onContextInitializedBinding);
             _isSubscribedToContextEvent = false;
         }
         
-
         // Initialize with Action via BaseContent Awake after all contexts are constructed
         public virtual void OnContextReady() 
         {

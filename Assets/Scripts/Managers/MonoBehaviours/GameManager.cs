@@ -4,6 +4,7 @@ using EventBusSystem.Utils;
 using StateSystem.Classes;
 using StateSystem.Enums;
 using StateSystem.Events;
+using StateSystem.States.GameStates;
 using UnityEngine;
 
 namespace Managers.MonoBehaviours
@@ -16,13 +17,18 @@ namespace Managers.MonoBehaviours
         #endregion
 
         #region States
-        private StateMachine<GameStateType> _stateMachine;
+        private StateMachine<GameStateType> _gameStateMachine;
         private AppStartState _appStartState;
+        private MainMenuState _mainMenuState;
+        private LoadGameplayState _loadGameplayState;
+        private PlayState _playState;
+        
         #endregion
 
         #region Events
 
         private EventBinding<IStateMachineEvent.OnStateChanged<GameStateType>> _onStateChangedBinding;
+        private EventBinding<IStateMachineEvent.OnChangeState<GameStateType>> _onChangeStateBinding;
 
         #endregion
         
@@ -30,7 +36,7 @@ namespace Managers.MonoBehaviours
 
         private void Awake()
         {
-            _stateMachine = new StateMachine<GameStateType>();
+            _gameStateMachine = new StateMachine<GameStateType>();
         }
 
         public void Start()
@@ -44,17 +50,16 @@ namespace Managers.MonoBehaviours
             if(isActive)
             {
                 _onStateChangedBinding = EventDispatcher.Subscribe<IStateMachineEvent.OnStateChanged<GameStateType>>(OnStateChangedHandler);
+                _onChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent.OnChangeState<GameStateType>>(OnChangeState);
             }
             else
             {
                 EventDispatcher.Unsubscribe(_onStateChangedBinding);
+                _onStateChangedBinding = null;
+                
+                EventDispatcher.Unsubscribe(_onChangeStateBinding);
+                _onStateChangedBinding = null;
             }
-        }
-
-        private void OnStateChangedHandler(IStateMachineEvent.OnStateChanged<GameStateType> stateArgs)
-        {
-            currentGameStateTypeType = stateArgs.NewState;
-            Debug.Log($"GameManager: {stateArgs.PreviousState} State changed to {currentGameStateTypeType}");
         }
 
         #endregion
@@ -62,10 +67,32 @@ namespace Managers.MonoBehaviours
 
         private void InitializeStates()
         {
-            _stateMachine.RegisterState(new AppStartState());
+            _appStartState = new AppStartState();
+            _gameStateMachine.RegisterState(_appStartState);
             
-            _stateMachine.ChangeState(GameStateType.OnAppStart);
+            _mainMenuState = new MainMenuState();
+            _gameStateMachine.RegisterState(_mainMenuState);
+            
+            _loadGameplayState = new LoadGameplayState();
+            _gameStateMachine.RegisterState(_loadGameplayState);
+
+            ChangeGameState(GameStateType.AppStart);
         }
-        
+
+        private void OnChangeState(IStateMachineEvent.OnChangeState<GameStateType> onChangeState)
+        {
+            ChangeGameState(onChangeState.StateType);
+        }
+
+        private void ChangeGameState(GameStateType stateType)
+        {
+            _gameStateMachine.ChangeState(stateType);
+        }
+
+        private void OnStateChangedHandler(IStateMachineEvent.OnStateChanged<GameStateType> stateArgs)
+        {
+            currentGameStateTypeType = stateArgs.NewState;
+            Debug.Log($"GameManager: {stateArgs.PreviousState} State changed to {currentGameStateTypeType}");
+        }
     }
 }

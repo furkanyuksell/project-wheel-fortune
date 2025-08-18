@@ -1,10 +1,8 @@
-using EventBusSystem.Utils;
 using StateSystem.Base;
 using StateSystem.Enums;
-using StateSystem.Events;
 using UnityEngine;
 
-namespace StateSystem.States
+namespace StateSystem.States.GameStates
 {
     public class GameState : BaseState<GameStateType> 
     {
@@ -16,12 +14,12 @@ namespace StateSystem.States
         }
         public override void Start()
         {
-            Debug.Log(nameof(GameState) + " Started");
+            Debug.Log(StateType + " Started");
         }
 
         public override void End()
         {
-            Debug.Log(nameof(GameState) + " Ended");
+            Debug.Log(StateType + " Ended");
         }
         
     }

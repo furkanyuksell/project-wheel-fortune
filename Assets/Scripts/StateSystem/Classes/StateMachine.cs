@@ -32,11 +32,9 @@ namespace StateSystem.Classes
                 CurrentState?.End();
                 CurrentState = newState;
                 CurrentStateType = newStateType;
-                CurrentState.Start();
 
-                EventDispatcher.Raise(
-                    new IStateMachineEvent.OnStateChanged<TStateType>(previousStateType, newStateType)
-                );
+                EventDispatcher.Raise(new IStateMachineEvent.OnStateChanged<TStateType>(previousStateType, newStateType));
+                CurrentState.Start();
             }
             else
             {
