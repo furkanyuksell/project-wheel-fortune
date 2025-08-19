@@ -36,9 +36,11 @@ namespace Managers.MonoBehaviours
             {
                 case SceneType.Gameplay:
                     LoadScene((int)SceneType.Gameplay);
+                    EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(GameStateType.LoadGameplay));
                     break;
                 case SceneType.MainMenu:
                     LoadScene((int)SceneType.MainMenu);
+                    EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(GameStateType.MainMenu));
                     break;
                 default:
                     Debug.LogWarning($"SceneManager: Unhandled scene type {args.SceneType}");
@@ -49,7 +51,6 @@ namespace Managers.MonoBehaviours
         private void LoadScene(int sceneId)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(sceneId);
-            EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(GameStateType.LoadGameplay));
         }
     }
 }

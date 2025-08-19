@@ -1,7 +1,6 @@
 using DISystem.Base;
 using Managers.MonoBehaviours;
 using UnityEngine;
-using Utils.Abstract;
 
 namespace DISystem.MonoBehaviours
 {
@@ -24,7 +23,8 @@ namespace DISystem.MonoBehaviours
 
         protected override void Awake()
         {
-            if (!HandleSingleton()) return;
+            if (!HandleSingleton()) 
+                return;
 
             base.Awake();
         }
@@ -35,22 +35,16 @@ namespace DISystem.MonoBehaviours
             {
                 if (_instance == this)
                     return true;
-                
-                Debug.LogWarning("Duplicate ProjectContext found! Destroying duplicate.");
                 Destroy(gameObject);
                 return false;
             }
 
             _instance = this;
         
-            if (transform.parent != null)
-            {
+            if (transform.parent != null) 
                 transform.SetParent(null);
-            }
         
             DontDestroyOnLoad(gameObject);
-            Debug.Log("ProjectContext initialized and marked as DontDestroyOnLoad");
-        
             return true;
         }
 
