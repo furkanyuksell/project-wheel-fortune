@@ -44,6 +44,12 @@ namespace Managers.MonoBehaviours
             InitializeStates();
         }
 
+        private SceneManager _sceneManager;
+        protected override void ResolveDependencies()
+        {
+            _sceneManager = ResolveDependency<SceneManager>();
+        }
+
         protected override void Register(bool isActive)
         {
             base.Register(isActive);
@@ -75,6 +81,9 @@ namespace Managers.MonoBehaviours
             
             _loadGameplayState = new LoadGameplayState();
             _gameStateMachine.RegisterState(_loadGameplayState);
+            
+            _playState = new PlayState();
+            _gameStateMachine.RegisterState(_playState);
 
             ChangeGameState(GameStateType.AppStart);
         }

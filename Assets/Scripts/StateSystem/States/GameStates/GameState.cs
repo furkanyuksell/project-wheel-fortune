@@ -14,12 +14,12 @@ namespace StateSystem.States.GameStates
         }
         public override void Start()
         {
-            Debug.Log(StateType + " Started");
+            Debug.Log(StateType + " GameState Started");
         }
 
         public override void End()
         {
-            Debug.Log(StateType + " Ended");
+            Debug.Log(StateType + " GameState Ended");
         }
         
     }

@@ -1,4 +1,7 @@
 using ComponentSystem.Components;
+using EventBusSystem.Utils;
+using SceneManagementSystem.Enums;
+using SceneManagementSystem.Interfaces;
 
 namespace ComponentSystem.Buttons.Menu
 {
@@ -6,7 +9,7 @@ namespace ComponentSystem.Buttons.Menu
     {
         protected override void OnClick()
         {
-            
+            EventDispatcher.Raise(new ISceneEvent.OnLoadSceneByType(SceneType.Gameplay));
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ComponentSystem.Base
 #if UNITY_EDITOR
         private void OnValidate()
         {
-            Init();
+            Setup();
         }
 #endif
     }
