@@ -10,7 +10,6 @@ namespace DISystem.MonoBehaviours
     {
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private SceneManager _sceneManager;
-        [SerializeField] private DataManager _dataManager;
 
         protected override void Initialize()
         {

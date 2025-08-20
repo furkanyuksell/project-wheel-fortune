@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Spinners
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f06176ddd9ef345fba7e49f41cf14003, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: baad35d1449ba44659291886232983e1, type: 3}
+  - {fileID: 21300000, guid: d92b084478ea840c7a89d1938895e1e0, type: 3}
+  - {fileID: 21300000, guid: ef2856c4a41df45688eea81f0e401cbf, type: 3}
+  - {fileID: 21300000, guid: df98ddc455ce84f2cb2161d963f843cf, type: 3}
+  - {fileID: 21300000, guid: f93735c51efe2405684451590d8356cd, type: 3}
+  - {fileID: 21300000, guid: c31f2ef6ca29346a4862b64bd2965cde, type: 3}
+  - {fileID: 21300000, guid: c965f5c8938ff4a3bbe33b3693003b8c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - ui_spin_bronze_base
+  - ui_spin_golden_indicator
+  - ui_spin_generic_button
+  - ui_spin_silver_base
+  - ui_spin_bronze_indicator
+  - ui_spin_silver_indicator
+  - ui_spin_golden_base
+  m_RenderDataMap: {}
+  m_Tag: Spinners
+  m_IsVariant: 0
