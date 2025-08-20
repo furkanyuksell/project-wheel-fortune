@@ -1,11 +1,10 @@
-using DISystem.Base;
-using EventBusSystem.Classes;
-using EventBusSystem.Utils;
+using Core.EventBusSystem.Classes;
+using Core.EventBusSystem.Utils;
+using Core.StateSystem.Classes;
+using Core.StateSystem.Enums;
+using Core.StateSystem.Events;
+using Core.StateSystem.States.GameStates;
 using Managers.Base;
-using StateSystem.Classes;
-using StateSystem.Enums;
-using StateSystem.Events;
-using StateSystem.States.GameStates;
 using UnityEngine;
 
 namespace Managers.MonoBehaviours

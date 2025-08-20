@@ -1,4 +1,4 @@
-using DISystem.Base;
+using Core.DISystem.Base;
 using UnityEngine;
 
 namespace Managers.Base

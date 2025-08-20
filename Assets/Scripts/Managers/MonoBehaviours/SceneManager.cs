@@ -1,11 +1,10 @@
-using DISystem.Base;
-using EventBusSystem.Classes;
-using EventBusSystem.Utils;
+using Core.EventBusSystem.Classes;
+using Core.EventBusSystem.Utils;
+using Core.SceneManagementSystem.Enums;
+using Core.SceneManagementSystem.Interfaces;
+using Core.StateSystem.Enums;
+using Core.StateSystem.Events;
 using Managers.Base;
-using SceneManagementSystem.Enums;
-using SceneManagementSystem.Interfaces;
-using StateSystem.Enums;
-using StateSystem.Events;
 using UnityEngine;
 
 namespace Managers.MonoBehaviours
