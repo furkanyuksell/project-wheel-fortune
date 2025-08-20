@@ -4,7 +4,7 @@ using DISystem.Interfaces;
 using EventBusSystem.Classes;
 using EventBusSystem.Utils;
 using UnityEngine;
-using Utils.Abstract;
+using Utils;
 
 namespace DISystem.Base
 {
@@ -16,14 +16,16 @@ namespace DISystem.Base
         #region IContext Implementation
         public bool IsInitialized => _isInitialized;
         #endregion
-        protected virtual void Awake()
+        protected virtual void Awake() { }
+
+        private void Start()
         {
             _registeredInstances = new Dictionary<Type, object>();
-            if (InitializeOnAwake())
+            if (InitializeOnStart())
                 Initialize();
         }
 
-        protected virtual bool InitializeOnAwake() => true;
+        protected virtual bool InitializeOnStart() => true;
 
         public void InitManual()
         {

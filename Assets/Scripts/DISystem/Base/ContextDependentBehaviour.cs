@@ -3,7 +3,7 @@ using DISystem.Interfaces;
 using EventBusSystem.Classes;
 using EventBusSystem.Utils;
 using UnityEngine;
-using Utils.Abstract;
+using Utils;
 
 namespace DISystem.Base
 {

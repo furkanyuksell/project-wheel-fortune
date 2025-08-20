@@ -1,5 +1,5 @@
 using UnityEngine;
-using Utils.Abstract;
+using Utils;
 
 namespace FactorySystem.Base
 {

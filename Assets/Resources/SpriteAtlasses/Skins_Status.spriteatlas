@@ -61,5 +61,5 @@ SpriteAtlas:
   - ui_card_icon_death
   - ui_icon_helmet_pumpkin
   m_RenderDataMap: {}
-  m_Tag: Skins
+  m_Tag: Skins_Status
   m_IsVariant: 0

@@ -1,9 +1,9 @@
+using DISystem.Base;
 using UnityEngine;
-using Utils.Abstract;
 
 namespace Managers.Base
 {
-    public class BaseManager : BaseBehaviour
+    public class BaseManager : ContextDependentBehaviour
     {
         
     }

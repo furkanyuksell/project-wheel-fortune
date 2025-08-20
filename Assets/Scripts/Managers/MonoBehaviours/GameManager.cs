@@ -1,6 +1,7 @@
 using DISystem.Base;
 using EventBusSystem.Classes;
 using EventBusSystem.Utils;
+using Managers.Base;
 using StateSystem.Classes;
 using StateSystem.Enums;
 using StateSystem.Events;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace Managers.MonoBehaviours
 {
-    public class GameManager : ContextDependentBehaviour
+    public class GameManager : BaseManager
     {
         #region Variables
         [Header("Game State")]
@@ -44,10 +45,8 @@ namespace Managers.MonoBehaviours
             InitializeStates();
         }
 
-        private SceneManager _sceneManager;
         protected override void ResolveDependencies()
         {
-            _sceneManager = ResolveDependency<SceneManager>();
         }
 
         protected override void Register(bool isActive)

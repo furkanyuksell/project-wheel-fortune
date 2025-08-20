@@ -1,6 +1,7 @@
 using DISystem.Base;
 using EventBusSystem.Classes;
 using EventBusSystem.Utils;
+using Managers.Base;
 using SceneManagementSystem.Enums;
 using SceneManagementSystem.Interfaces;
 using StateSystem.Enums;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace Managers.MonoBehaviours
 {
-    public class SceneManager : ContextDependentBehaviour
+    public class SceneManager : BaseManager
     {
         #region Events
         private EventBinding<ISceneEvent.OnLoadSceneByType> _onLoadSceneByTypeBinding;

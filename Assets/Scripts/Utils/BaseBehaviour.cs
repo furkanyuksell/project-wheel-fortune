@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Utils.Abstract
+namespace Utils
 {
     public abstract class BaseBehaviour : MonoBehaviour
     {

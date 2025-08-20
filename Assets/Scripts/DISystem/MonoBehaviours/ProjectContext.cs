@@ -1,52 +1,16 @@
 using DISystem.Base;
+using DISystem.Utils;
 using Managers.MonoBehaviours;
 using UnityEngine;
+using Utils;
 
 namespace DISystem.MonoBehaviours
 {
-    public class ProjectContext : BaseContext
+    public class ProjectContext : PersistentContext<ProjectContext>
     {
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private SceneManager _sceneManager;
-        private static ProjectContext _instance;
-        public static ProjectContext Instance 
-        { 
-            get 
-            {
-                if (_instance == null)
-                {
-                    Debug.LogError("ProjectContext instance is null! Make sure it exists in the first scene.");
-                }
-                return _instance;
-            } 
-        }
-
-        protected override void Awake()
-        {
-            if (!HandleSingleton()) 
-                return;
-
-            base.Awake();
-        }
-
-        private bool HandleSingleton()
-        {
-            if (_instance != null)
-            {
-                if (_instance == this)
-                    return true;
-                Destroy(gameObject);
-                return false;
-            }
-
-            _instance = this;
-        
-            if (transform.parent != null) 
-                transform.SetParent(null);
-        
-            DontDestroyOnLoad(gameObject);
-            return true;
-        }
+        [SerializeField] private DataManager _dataManager;
 
         protected override void Initialize()
         {
