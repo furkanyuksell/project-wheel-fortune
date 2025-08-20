@@ -1,13 +1,12 @@
+using Gameplay.ItemSystem.Classes;
 using Gameplay.ItemSystem.Enums;
 using UnityEngine;
 
 namespace Gameplay.ItemSystem.Scriptables
 {
-    [CreateAssetMenu(fileName = "ItemDataSO", menuName = "Data/Wheel Fortune/ItemDataSO", order = 0)]
-    public class ItemDataSO : ScriptableObject
+    public abstract class BaseRewardSO : ScriptableObject
     {
-        public Sprite sprite;
-        public ItemType itemType;
+        public RewardItem rewardItem;
         public RarityType rarityType;
         [Range(0, 100)]
         public float possibilityRatio;

@@ -1,6 +1,6 @@
 namespace Gameplay.ItemSystem.Enums
 {
-    public enum ItemType
+    public enum RewardType
     {
         None,
         Death,
