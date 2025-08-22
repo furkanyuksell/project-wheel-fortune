@@ -66,7 +66,7 @@ namespace Controllers.MonoBehaviours
             StateMachine.RegisterState(_collectingState);
             StateMachine.RegisterState(_finishedState);
             
-            ChangeState(CurrentState);
+            ChangeState(WheelStateType.Ready);
         }
         
         private void OnChangeState(IStateMachineEvent.OnChangeState<WheelStateType> changeStateEvent)
