@@ -11,6 +11,7 @@ namespace Core.DISystem.Base
     {
         private Dictionary<Type, object> _registeredInstances;
         private bool _isInitialized = false;
+        private List<IContextDependent> _dependentObjects = new();
 
         #region IContext Implementation
         public bool IsInitialized => _isInitialized;
@@ -36,9 +37,39 @@ namespace Core.DISystem.Base
         {
             _isInitialized = true;
             Debug.Log($"Context {GetType().Name} initialized.");
-            EventDispatcher.Raise(new IContextEvents.OnContextInitialized());
+
+            NotifyDependentObjects();
+        }
+        private void NotifyDependentObjects()
+        {
+            for (int i = _dependentObjects.Count - 1; i >= 0; i--)
+            {
+                if (_dependentObjects[i] != null)
+                    _dependentObjects[i].OnContextReady();
+                else
+                    _dependentObjects.RemoveAt(i);
+            }
         }
         
+        public void RegisterDependent(IContextDependent dependent)
+        {
+            if (dependent == null || _dependentObjects.Contains(dependent))
+                return;
+            
+            _dependentObjects.Add(dependent);
+        
+            if (_isInitialized) 
+                dependent.OnContextReady();
+        }
+        
+        public void UnregisterDependent(IContextDependent dependent)
+        {
+            if (dependent == null)
+                return;
+            
+            _dependentObjects.Remove(dependent);
+        }
+
         protected T InitializeContextDependent<T>(T instance) where T : class, IContextDependent
         {
             if (instance == null)

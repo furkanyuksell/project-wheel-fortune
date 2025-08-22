@@ -9,51 +9,30 @@ namespace Core.DISystem.Base
 {
     public abstract class ContextDependentBehaviour : BaseBehaviour, IContextDependent
     {
-        private EventBinding<IContextEvents.OnContextInitialized> _onContextInitializedBinding;
-        private bool _isSubscribedToContextEvent = false;
         private IContext _context;
+        private bool _isContextReady = false;
         public IContext Context => _context;
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            UnsubscribeFromContext();
+            _context?.UnregisterDependent(this);
         }
 
         public void Initialize(IContext context)
         {
-            if (_context != null) 
-                UnsubscribeFromContext();
-            
+            _context?.UnregisterDependent(this);
+
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            SubscribeToContext();
+            _context.RegisterDependent(this);
         }
         
-        private void SubscribeToContext()
-        {
-            if (_context != null && !_isSubscribedToContextEvent)
-            {
-                _onContextInitializedBinding = EventDispatcher.Subscribe<IContextEvents.OnContextInitialized>(OnContextReady);
-                _isSubscribedToContextEvent = true;
-            
-                if (_context is BaseContext baseContext && baseContext.IsInitialized)
-                {
-                    OnContextReady();
-                }
-            }
-        }
-        
-        private void UnsubscribeFromContext()
-        {
-            if (_context == null || !_isSubscribedToContextEvent) return;
-            
-            EventDispatcher.Unsubscribe(_onContextInitializedBinding);
-            _isSubscribedToContextEvent = false;
-        }
-        
-        // Initialize with Action via BaseContent Awake after all contexts are constructed
         public virtual void OnContextReady() 
         {
+            if (_isContextReady)
+                return;
+            
+            _isContextReady = true;
             Debug.Log($"Constructed {GetType().Name}");
             ResolveDependencies();
         }
