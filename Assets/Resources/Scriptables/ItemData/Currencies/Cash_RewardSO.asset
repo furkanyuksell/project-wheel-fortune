@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cash_RewardSO
   m_EditorClassIdentifier: 
   rewardItem:
-    name: 
+    name: Cash
     icon: {fileID: 0}
     rewardType: 0
   rarityType: 0

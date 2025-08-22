@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Gold_RewardSO
   m_EditorClassIdentifier: 
   rewardItem:
-    name: 
+    name: Gold
     icon: {fileID: 0}
     rewardType: 0
   rarityType: 0
