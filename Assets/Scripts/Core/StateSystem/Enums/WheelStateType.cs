@@ -5,7 +5,6 @@ namespace Core.StateSystem.Enums
         None,
         Ready,
         Spinning,
-        Stopping,
         Stopped,
         Collecting,
         Finished

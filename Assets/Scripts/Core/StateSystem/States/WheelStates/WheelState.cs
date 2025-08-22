@@ -6,7 +6,7 @@ namespace Core.StateSystem.States.WheelStates
 {
     public class WheelState : BaseState<WheelStateType>
     {
-        public WheelState(WheelStateType stateType) : base(stateType)
+        protected WheelState(WheelStateType stateType) : base(stateType)
         {
         }
     }

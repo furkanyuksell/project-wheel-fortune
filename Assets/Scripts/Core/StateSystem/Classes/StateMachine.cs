@@ -8,14 +8,20 @@ namespace Core.StateSystem.Classes
 {
     public class StateMachine<TStateType> where TStateType : Enum
     {
+        #region Publics
         public TStateType CurrentStateType { get; private set; }
         public IState<TStateType> CurrentState { get; private set; }
+        #endregion
 
+        #region Privates
         private readonly Dictionary<TStateType, IState<TStateType>> _states;
+        private readonly IStateController<TStateType> _controller;
+        #endregion
         
-        public StateMachine()
+        public StateMachine(IStateController<TStateType> controller)
         {
             _states = new Dictionary<TStateType, IState<TStateType>>();
+            _controller = controller ?? throw new ArgumentNullException(nameof(controller));
         }
 
         public void RegisterState(IState<TStateType> state)
@@ -32,8 +38,8 @@ namespace Core.StateSystem.Classes
                 CurrentState?.End();
                 CurrentState = newState;
                 CurrentStateType = newStateType;
-
-                EventDispatcher.Raise(new IStateMachineEvent.OnStateChanged<TStateType>(previousStateType, newStateType));
+                
+                _controller.StateChanged(previousStateType, newStateType);
                 CurrentState.Start();
             }
             else

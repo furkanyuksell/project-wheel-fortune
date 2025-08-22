@@ -1,9 +1,88 @@
+using System;
 using Controllers.Base;
+using Core.EventBusSystem.Classes;
+using Core.EventBusSystem.Utils;
+using Core.StateSystem.Classes;
+using Core.StateSystem.Enums;
+using Core.StateSystem.Events;
+using Core.StateSystem.Interface;
+using Core.StateSystem.States.WheelStates;
+using UnityEngine;
 
 namespace Controllers.MonoBehaviours
 {
-    public class WheelController : BaseController
+    public class WheelController : BaseController, IStateController<WheelStateType>
     {
+        public StateMachine<WheelStateType> StateMachine { get; set; }
+        public WheelStateType CurrentState { get; set; }
+
+        #region States
+        private WheelReadyState _readyState;
+        private WheelSpinningState _spinningState;
+        private WheelStoppedState _stoppedState;
+        private WheelCollectingState _collectingState;
+        private WheelFinishedState _finishedState;
+        #endregion
+
+        #region Events
+        public EventBinding<IStateMachineEvent.OnChangeState<WheelStateType>> OnChangeStateBinding { get; set; }
+        #endregion
+
+        private void Awake()
+        {
+            StateMachine = new StateMachine<WheelStateType>(this);
+        }
+
+        private void Start()
+        {
+            InitializeStates();
+        }
+
+        protected override void Register(bool isActive)
+        {
+            base.Register(isActive);
+            if (isActive)
+            {
+                OnChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent.OnChangeState<WheelStateType>>(OnChangeState);
+            }
+            else
+            {
+                EventDispatcher.Unsubscribe(OnChangeStateBinding);
+                OnChangeStateBinding = null;
+            }
+        }
+
+        public void InitializeStates()
+        {
+            _readyState = new WheelReadyState();
+            _spinningState = new WheelSpinningState();
+            _stoppedState = new WheelStoppedState();
+            _collectingState = new WheelCollectingState();
+            _finishedState = new WheelFinishedState();
+
+            StateMachine.RegisterState(_readyState);
+            StateMachine.RegisterState(_spinningState);
+            StateMachine.RegisterState(_stoppedState);
+            StateMachine.RegisterState(_collectingState);
+            StateMachine.RegisterState(_finishedState);
+            
+            ChangeState(CurrentState);
+        }
         
+        private void OnChangeState(IStateMachineEvent.OnChangeState<WheelStateType> changeStateEvent)
+        {
+            ChangeState(changeStateEvent.StateType);
+        }
+
+        public void ChangeState(WheelStateType newStateType)
+        {
+            StateMachine.ChangeState(newStateType);
+        }
+
+        public void StateChanged(WheelStateType previousStateType, WheelStateType newStateType)
+        {
+            CurrentState = newStateType;
+            Debug.Log($"Wheel state {previousStateType} changed to: {newStateType}");
+        }
     }
 }
