@@ -20,8 +20,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 265732803, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 265732803, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
       propertyPath: m_fontSize
       value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 949082877, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 949082878, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
       propertyPath: m_Pivot.y
@@ -141,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5051531483318642734, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
       propertyPath: m_Name
-      value: LevelSlotUI
+      value: Text_LevelSlotUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
