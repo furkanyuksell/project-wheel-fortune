@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core.ComponentSystem.Components
 {
-    public abstract class TextComponents : CustomUIComponentBase
+    public abstract class TextComponent : CustomUIComponentBase
     {
         private TextMeshProUGUI _textMesh;
         protected override void Setup()

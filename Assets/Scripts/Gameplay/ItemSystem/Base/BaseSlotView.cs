@@ -1,3 +1,5 @@
+using System;
+using Gameplay.ItemSystem.Components;
 using Gameplay.ItemSystem.Scriptables;
 using TMPro;
 using UnityEngine;
@@ -8,16 +10,21 @@ namespace Gameplay.ItemSystem.Base
 {
     public class BaseSlotView : BaseView<RewardDefinitionSO>
     {
-        [SerializeField] private Image _iconImage;
-        [SerializeField] private TextMeshProUGUI _nameText;
+        [SerializeField] private SlotImage _imgSlot;
+        [SerializeField] private SlotCountText _txtSlot;
 
         protected override void Refresh()
         {
             if (_model != null) return;
             
-            _iconImage.sprite = _model.rewardItem.icon;
-            _nameText.text = string.Empty;
+            _imgSlot.SetSprite(_model.rewardItem.icon);
         }
-        
+
+
+        private void OnValidate()
+        {
+            if (!_imgSlot) _imgSlot = GetComponentInChildren<SlotImage>();
+            if (!_txtSlot) _txtSlot = GetComponentInChildren<SlotCountText>();
+        }
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265732802}
   - component: {fileID: 265732804}
+  - component: {fileID: 6240973149357240875}
   - component: {fileID: 265732803}
   m_Layer: 5
   m_Name: ui_text_reward_count_value
@@ -46,6 +47,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 265732801}
   m_CullTransparentMesh: 1
+--- !u!114 &6240973149357240875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265732801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dff0300c9d74c04bd8bf30800ef03d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &265732803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126907727}
   - component: {fileID: 1126907729}
+  - component: {fileID: 6961864064502831311}
   - component: {fileID: 1126907728}
   m_Layer: 5
   m_Name: ui_image_reward_icon_value
@@ -218,6 +232,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1126907726}
   m_CullTransparentMesh: 1
+--- !u!114 &6961864064502831311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126907726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c126a73247fd4fd0aac8cf959eea8f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1126907728
 MonoBehaviour:
   m_ObjectHideFlags: 0
