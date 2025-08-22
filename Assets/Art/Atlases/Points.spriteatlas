@@ -58,7 +58,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: ab167d78c6b3e4069a2c8e1c4e6d4eac, type: 3}
   - {fileID: 21300000, guid: c655350a693824d6db57e2d5be711103, type: 3}
   - {fileID: 21300000, guid: e537a80adcfec4c0faa8f1c0177f716e, type: 3}
-  - {fileID: 21300000, guid: d337d37ac25ad47b79bad65cb7adba0a, type: 3}
   - {fileID: 21300000, guid: 2af251cc60da640079e1251d3ea9f101, type: 3}
   m_PackedSpriteNamesToIndex:
   - UI_Icons_Armor_Points
@@ -69,7 +68,6 @@ SpriteAtlas:
   - UI_Icons_Rifle_Points
   - UI_Icons_Shotgun_Points
   - UI_Icons_SMG_Points
-  - UI_Icons_Pistol_Points_
   - UI_Icons_Pistol_Points
   m_RenderDataMap: {}
   m_Tag: Points

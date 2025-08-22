@@ -83,6 +83,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1126907728, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5051531483318642721, guid: 51db26ca9f1f74057b5153217c54b012, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
