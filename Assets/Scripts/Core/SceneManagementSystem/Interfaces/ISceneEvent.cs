@@ -11,5 +11,6 @@ namespace Core.SceneManagementSystem.Interfaces
             public OnLoadSceneByType(SceneType sceneType) => SceneType = sceneType;
         }
 
+        public struct OnGameSceneInitialization : ISceneEvent { }
     }
 }

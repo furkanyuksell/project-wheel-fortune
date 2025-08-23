@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using Core.EventBusSystem.Classes;
 using Core.EventBusSystem.Utils;
 using Core.SceneManagementSystem.Enums;
@@ -31,16 +33,13 @@ namespace Managers.MonoBehaviours
 
         private void OnLoadSceneByTypeHandler(ISceneEvent.OnLoadSceneByType args)
         {
-            // Handle the scene loading logic based on the SceneType
             switch (args.SceneType)
             {
                 case SceneType.Gameplay:
-                    LoadScene((int)SceneType.Gameplay);
-                    EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(GameStateType.LoadGameplay));
+                    LoadScene((int)SceneType.Gameplay, GameStateType.LoadGameplay);
                     break;
                 case SceneType.MainMenu:
-                    LoadScene((int)SceneType.MainMenu);
-                    EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(GameStateType.MainMenu));
+                    LoadScene((int)SceneType.MainMenu, GameStateType.MainMenu);
                     break;
                 default:
                     Debug.LogWarning($"SceneManager: Unhandled scene type {args.SceneType}");
@@ -48,9 +47,19 @@ namespace Managers.MonoBehaviours
             }
         }
 
-        private void LoadScene(int sceneId)
+        private void LoadScene(int sceneId, GameStateType gameStateType)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneId);
+            StartCoroutine(LoadSceneAsync(sceneId, gameStateType));
+        }
+
+        private IEnumerator LoadSceneAsync(int sceneId, GameStateType gameStateType)
+        {
+            AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneId);
+    
+            while (!asyncOperation.isDone)
+                yield return null;
+            
+            EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(gameStateType));
         }
     }
 }

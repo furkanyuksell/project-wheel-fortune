@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.SlotSystem.Scriptables
 {
-    [CreateAssetMenu(fileName = "RewardDataSO", menuName = "Data/Wheel Fortune/CurrencyRewardDefinitionSO", order = 0)]
+    [CreateAssetMenu(fileName = "RewardDataSO", menuName = "Data/Reward/CurrencyRewardDefinitionSO", order = 0)]
     public class CurrencyRewardDefinitionSO : BaseRewardSO
     {
         public CurrencyType currencyType;

@@ -2,6 +2,7 @@ using System;
 using Controllers.Base;
 using Core.EventBusSystem.Classes;
 using Core.EventBusSystem.Utils;
+using Core.SceneManagementSystem.Interfaces;
 using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 using Core.StateSystem.Events;
@@ -34,7 +35,7 @@ namespace Controllers.MonoBehaviours
             StateMachine = new StateMachine<WheelStateType>(this);
         }
 
-        private void Start()
+        public override void Initialize()
         {
             InitializeStates();
         }
@@ -69,7 +70,7 @@ namespace Controllers.MonoBehaviours
             StateMachine.RegisterState(_collectingState);
             StateMachine.RegisterState(_finishedState);
             
-            ChangeState(WheelStateType.Ready);
+            ChangeState(WheelStateType.Preparation);
         }
         
         private void OnChangeState(IStateMachineEvent.OnChangeState<WheelStateType> changeStateEvent)

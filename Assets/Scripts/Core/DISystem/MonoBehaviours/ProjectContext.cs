@@ -9,7 +9,7 @@ namespace Core.DISystem.MonoBehaviours
     {
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private SceneManager _sceneManager;
-        [FormerlySerializedAs("_factoryManager")] [SerializeField] private ObjectPoolManager objectPoolManager;
+        [SerializeField] private ObjectPoolManager objectPoolManager;
 
         protected override void Initialize()
         {
