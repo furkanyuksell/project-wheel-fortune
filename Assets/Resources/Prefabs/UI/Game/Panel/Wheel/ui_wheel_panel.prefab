@@ -597,7 +597,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8852cc18a845fe88fdfbfb9e231a68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _container: {fileID: 6983259675893579561}
+  _content: {fileID: 6634960820114328425}
+--- !u!224 &6634960820114328425 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3189348432711297881, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}
+  m_PrefabInstance: {fileID: 8094879714347851824}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6983259675893579561 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1206770752612343577, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}
