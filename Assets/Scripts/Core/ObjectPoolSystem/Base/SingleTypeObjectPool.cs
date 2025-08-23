@@ -25,6 +25,6 @@ namespace Core.ObjectPoolSystem.Base
         }
 
         protected override PoolItemInfo<T> GetPoolItemInfo(int typeIndex) => _poolItemInfo;
-        public T GetProduct() => GetPooledItem(0);
+        public T GetItem() => GetPooledItem(0);
     }
 }

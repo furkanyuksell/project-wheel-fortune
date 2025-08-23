@@ -16,7 +16,10 @@ namespace Managers.MonoBehaviours
         #region Events
         private EventBinding<ISceneEvent.OnLoadSceneByType> _onLoadSceneByTypeBinding;
         #endregion
-        
+
+        #region DI
+        private GameManager _gameManager;
+        #endregion
         
         protected override void Register(bool isActive)
         {
@@ -29,6 +32,11 @@ namespace Managers.MonoBehaviours
             {
                 EventDispatcher.Unsubscribe(_onLoadSceneByTypeBinding);
             }
+        }
+
+        protected override void ResolveDependencies()
+        {
+            _gameManager = ResolveDependency<GameManager>();
         }
 
         private void OnLoadSceneByTypeHandler(ISceneEvent.OnLoadSceneByType args)
@@ -59,7 +67,7 @@ namespace Managers.MonoBehaviours
             while (!asyncOperation.isDone)
                 yield return null;
             
-            EventDispatcher.Raise(new IStateMachineEvent.OnChangeState<GameStateType>(gameStateType));
+            _gameManager.ChangeState(gameStateType);
         }
     }
 }

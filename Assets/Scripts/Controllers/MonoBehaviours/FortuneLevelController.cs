@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Controllers.MonoBehaviours
 {
-    public class LevelController : BaseController
+    public class FortuneLevelController : BaseController
     {
         #region Privates
         private int _level;

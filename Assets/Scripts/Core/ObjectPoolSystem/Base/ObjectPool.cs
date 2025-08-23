@@ -40,7 +40,7 @@ namespace Core.ObjectPoolSystem.Base
             return pooledItem;
         }
 
-        public virtual T GetPooledItem(int typeIndex = 0)
+        public virtual T GetPooledItem(int typeIndex)
         {
             ValidateTypeIndex(typeIndex);
 

@@ -18,7 +18,7 @@ namespace Core.ComponentSystem.Components
         
         public void SetText(string text)
         {
-            _textMesh.text = text;
+            _textMesh.SetText(text);
         }
 
         public void SetColor(Color color)

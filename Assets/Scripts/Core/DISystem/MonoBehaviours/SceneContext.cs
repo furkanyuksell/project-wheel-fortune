@@ -1,7 +1,6 @@
 using Controllers.MonoBehaviours;
 using Core.DISystem.Base;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core.DISystem.MonoBehaviours
 {
@@ -10,7 +9,8 @@ namespace Core.DISystem.MonoBehaviours
         [SerializeField] private GameController gameController;
         [SerializeField] private WheelController _wheelController;
         [SerializeField] private PrizeBarController _prizeBarController;
-        [SerializeField] private ZoneBarController _zoneBarController;
+        [SerializeField] private ZoneBarController _zoneBarController; 
+        [SerializeField] private FortuneLevelController _fortuneLevelController;
 
         protected override void Initialize()
         {
@@ -18,6 +18,7 @@ namespace Core.DISystem.MonoBehaviours
             RegisterInstance(InitializeContextDependent(_wheelController));
             RegisterInstance(InitializeContextDependent(_prizeBarController));
             RegisterInstance(InitializeContextDependent(_zoneBarController));
+            RegisterInstance(InitializeContextDependent(_fortuneLevelController));
             base.Initialize();
         }
     }

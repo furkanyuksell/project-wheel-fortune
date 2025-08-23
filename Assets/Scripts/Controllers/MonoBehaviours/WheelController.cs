@@ -13,11 +13,6 @@ namespace Controllers.MonoBehaviours
 {
     public class WheelController : BaseController, IStateController<WheelStateType>
     {
-        [Header("References")]
-        #region Handlers
-        [SerializeField] private WheelHandler _handler;
-        #endregion
-
         #region Controllers
         private GameController _gameController;
         #endregion
@@ -68,7 +63,7 @@ namespace Controllers.MonoBehaviours
 
         public void InitializeStates()
         {
-            _preparationState = new WheelPreparation(_gameController.FortuneDataSO);
+            _preparationState = new WheelPreparation();
             _readyState = new WheelReadyState();
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
@@ -105,15 +100,15 @@ namespace Controllers.MonoBehaviours
         }
 
 #if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if (_handler == null)
-            {
-                _handler = FindObjectOfType<WheelHandler>();
-                if (_handler == null) 
-                    Debug.LogError("WheelHandler not found in the scene. Please ensure it is present.");
-            }
-        }
+        // private void OnValidate()
+        // {
+        //     if (_handler == null)
+        //     {
+        //         _handler = FindObjectOfType<WheelHandler>();
+        //         if (_handler == null) 
+        //             Debug.LogError("WheelHandler not found in the scene. Please ensure it is present.");
+        //     }
+        // }
 #endif
     }
 }
