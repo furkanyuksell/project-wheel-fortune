@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2378378fc854c7b9bd549fa00d69a80, type: 3}
   m_Name: Silver_WheelDataSO
   m_EditorClassIdentifier: 
-  wheelType: 0
-  wheelSprite: {fileID: 0}
-  wheelIndicatorSprite: {fileID: 0}
-  zoneBackgroundSprite: {fileID: 0}
+  wheelType: 3
+  wheelSprite: {fileID: 21300000, guid: c965f5c8938ff4a3bbe33b3693003b8c, type: 3}
+  wheelIndicatorSprite: {fileID: 21300000, guid: d92b084478ea840c7a89d1938895e1e0, type: 3}
   isRiskFree: 0
-  wheelItemContentList: []
+  wheelItemContentList:
+  - {fileID: 11400000, guid: 16ecd66370481495bad239a850ee2fab, type: 2}
+  - {fileID: 11400000, guid: f567ee626ccdd4ba1a3a6060462aebb9, type: 2}
+  - {fileID: 11400000, guid: 65850487b2c784dbfa6b26db0058c8ad, type: 2}
+  - {fileID: 11400000, guid: 3d7eaca99e7dc40fb912c93e4f288fa6, type: 2}
+  - {fileID: 11400000, guid: ca6286b801c474cd796e64c835521bbe, type: 2}
+  - {fileID: 11400000, guid: d9a26c547d17049e5ba69407a6c1ff01, type: 2}
+  - {fileID: 11400000, guid: 3e5aebcd9ed824ed99a5072802773f09, type: 2}
+  - {fileID: 11400000, guid: 0e5f6dd0a188b46c7a906d397a2e52d3, type: 2}

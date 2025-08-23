@@ -11,7 +11,6 @@ namespace Gameplay.WheelSystem.Scriptables
         public WheelType wheelType;
         public Sprite wheelSprite;
         public Sprite wheelIndicatorSprite;
-        public Sprite zoneBackgroundSprite;
         public bool isRiskFree;
         public List<BaseRewardSO> wheelItemContentList;
     }

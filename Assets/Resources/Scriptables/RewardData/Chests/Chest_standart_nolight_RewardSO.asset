@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9060ee2067cca45e1805e9c1ce5c5cd5, type: 3}
-  m_Name: Chest_super_nolight_ItemDataSO
+  m_Script: {fileID: 11500000, guid: 11c25ec43dcd4bb195067d0907435f54, type: 3}
+  m_Name: Chest_standart_nolight_RewardSO
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 17ca96d51db9649d4a4173af2f66a199, type: 3}
-  itemType: 8
+  rewardItem:
+    name: Chest Standard
+    icon: {fileID: 21300000, guid: 997ad5202fdd2479992fe9dcfee315d0, type: 3}
+    rewardType: 8
   rarityType: 0
-  possibilityRatio: 15
+  possibilityRatio: 10
