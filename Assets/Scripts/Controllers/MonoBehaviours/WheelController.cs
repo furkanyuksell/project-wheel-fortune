@@ -17,6 +17,7 @@ namespace Controllers.MonoBehaviours
         public WheelStateType CurrentState { get; set; }
 
         #region States
+        private WheelPreparation _preparationState;
         private WheelReadyState _readyState;
         private WheelSpinningState _spinningState;
         private WheelStoppedState _stoppedState;
@@ -54,12 +55,14 @@ namespace Controllers.MonoBehaviours
 
         public void InitializeStates()
         {
+            _preparationState = new WheelPreparation();
             _readyState = new WheelReadyState();
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
             _collectingState = new WheelCollectingState();
             _finishedState = new WheelFinishedState();
 
+            StateMachine.RegisterState(_preparationState);
             StateMachine.RegisterState(_readyState);
             StateMachine.RegisterState(_spinningState);
             StateMachine.RegisterState(_stoppedState);
