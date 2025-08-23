@@ -1,9 +1,9 @@
 using System;
+using Core.BaseClasses;
 using Core.DISystem.Interfaces;
 using Core.EventBusSystem.Classes;
 using Core.EventBusSystem.Utils;
 using UnityEngine;
-using Utils;
 
 namespace Core.DISystem.Base
 {

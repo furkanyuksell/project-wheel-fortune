@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Core.BaseClasses;
 using Core.DISystem.Interfaces;
 using Core.EventBusSystem.Utils;
 using UnityEngine;
-using Utils;
 
 namespace Core.DISystem.Base
 {
