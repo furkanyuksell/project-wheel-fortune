@@ -18,8 +18,10 @@ namespace Core.ComponentSystem.Components
         
         protected override void Setup()
         {
-            if (!_button) _button = GetComponent<Button>();
-            if (!_txtContent) _txtContent = GetComponentInChildren<TextMeshProUGUI>();
+            if (!_button) 
+                _button = GetComponent<Button>();
+            if (!_txtContent) 
+                _txtContent = GetComponentInChildren<TextMeshProUGUI>();
         }
 
         protected override void Configure()

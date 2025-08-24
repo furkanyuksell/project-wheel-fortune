@@ -1,9 +1,7 @@
 using Controllers.MonoBehaviours;
-using Core.DISystem.Interfaces;
 using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 using Gameplay.SlotSystem.Classes;
-using UnityEngine;
 
 namespace Core.StateSystem.States.WheelStates
 {

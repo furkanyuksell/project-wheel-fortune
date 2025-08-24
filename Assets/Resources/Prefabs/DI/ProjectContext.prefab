@@ -44,6 +44,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fed1b9ce617435c9e577ee513c2bc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1705176504755258977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3193119866263644976}
+  - component: {fileID: 9081905623416998949}
+  m_Layer: 0
+  m_Name: IconPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3193119866263644976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705176504755258977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2815860979447789622}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9081905623416998949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705176504755258977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0c6fd90d724c1b95de4e38a2be4286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolContainer: {fileID: 3193119866263644976}
+  _allowPoolGrowth: 1
+  _maxPoolSize: 100
+  _totalCreated: 0
+  _activeCount: 0
+  _poolItemInfo:
+    poolSize: 10
+    prefab: {fileID: 3246854590846615777, guid: dc52c957804664403b9350393e793a88, type: 3}
 --- !u!1 &2136284770693134182
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +127,7 @@ Transform:
   m_Children:
   - {fileID: 2202218112047189053}
   - {fileID: 6370743942511409432}
+  - {fileID: 3193119866263644976}
   m_Father: {fileID: 5835573037151384831}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slotPool: {fileID: 1341110923068087331}
   _zoneBarPool: {fileID: 5308903599143718429}
+  _iconPool: {fileID: 9081905623416998949}
 --- !u!1 &2359848520429571995
 GameObject:
   m_ObjectHideFlags: 0

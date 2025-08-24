@@ -7,8 +7,8 @@ namespace Gameplay.WheelSystem.Events
     {
         public struct OnWheelPreparation : IWheelEvent
         {
-            public FortuneType FortuneType { get; }
-            public int FortuneLevel { get; }
+            public FortuneType FortuneType;
+            public int FortuneLevel;
             
             public OnWheelPreparation(int fortuneLevel, FortuneType fortuneType)
             {

@@ -17,5 +17,18 @@ namespace Utils
             float angle = -sliceAngle * sliceIndex;
             return Vector3.forward * angle;
         }
+        
+        public static float GetPercentageValue(float value, float minValue, float maxValue,
+            bool hasNegativeBounds = false)
+        {
+            float percentage =
+                hasNegativeBounds
+                    ? (maxValue - value) / (maxValue - minValue)
+                    : 1 - ((maxValue - value) / (maxValue - minValue));
+
+            percentage = Mathf.Clamp01(percentage);
+
+            return percentage;
+        }
     }
 }

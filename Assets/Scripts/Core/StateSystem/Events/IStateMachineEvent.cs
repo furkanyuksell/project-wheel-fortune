@@ -9,7 +9,7 @@ namespace Core.StateSystem.Events
         public struct OnChangeState : IStateMachineEvent<TStateType>
         {
             public TStateType StateType { get; }
-            public DataTransporter Data;
+            public DataTransporter Data { get; }
             public OnChangeState(TStateType stateType, DataTransporter data = null)
             {
                 StateType = stateType;

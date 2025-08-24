@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1674bd2f429442e593d78dcbc34b5914, type: 3}
+  m_Name: IconSpawnSystemData
+  m_EditorClassIdentifier: 
+  initialScalePower: 1.35
+  seperationPowerPercent: 0.25
+  initialRotationRandomizerValue: 180
+  targetReachedScalePower: 0.4
+  targetReachedScaleDuration: 0.3
+  maxIconSpawnCount: 10
+  iconsMinSeperationRange: 250
+  iconsMaxSeperationRange: 400
+  iconsSeperationDurationMultiplier: 0.3
+  iconsMovementDuration: 0.65
+  animatedCurrencyUpdateDuration: 0.65
+  animatedCurrencyUpdateDelay: 0.75

@@ -6,7 +6,7 @@ namespace Core.ComponentSystem.Components
 {
     public abstract class ImageComponent : CustomUIComponentBase
     {
-        protected Image image;
+        [SerializeField] protected Image image;
         private float _height;
         private float _width;
         
@@ -14,7 +14,8 @@ namespace Core.ComponentSystem.Components
         
         protected override void Setup()
         {
-            image = GetComponent<Image>();
+            if (!image) 
+                image = GetComponent<Image>();
             _width = image.rectTransform.rect.width;
             _height = image.rectTransform.rect.height;
         }

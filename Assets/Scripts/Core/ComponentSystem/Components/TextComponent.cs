@@ -6,10 +6,11 @@ namespace Core.ComponentSystem.Components
 {
     public abstract class TextComponent : CustomUIComponentBase
     {
-        private TextMeshProUGUI _textMesh;
+        [SerializeField] private TextMeshProUGUI _textMesh;
         protected override void Setup()
         {
-            _textMesh = GetComponentInChildren<TextMeshProUGUI>();
+            if (!_textMesh) 
+                _textMesh = GetComponentInChildren<TextMeshProUGUI>();
         }
 
         protected override void Configure()
