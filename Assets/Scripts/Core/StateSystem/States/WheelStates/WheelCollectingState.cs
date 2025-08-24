@@ -7,7 +7,7 @@ namespace Core.StateSystem.States.WheelStates
 {
     public class WheelCollectingState : WheelState
     {
-        private PrizeBarController _prizeBarController;
+        private readonly PrizeBarController _prizeBarController;
         public WheelCollectingState(PrizeBarController prizeBarController) : base(WheelStateType.Collecting)
         {
             _prizeBarController = prizeBarController;
