@@ -8,8 +8,10 @@ namespace Gameplay.PanelSystem.Events
         public struct OnPanelPrepare : IPanelEvent
         {
             public FortuneType FortuneType { get; }
-            public OnPanelPrepare(FortuneType fortuneType)
+            public int FortuneLevel { get; }
+            public OnPanelPrepare(int fortuneLevel, FortuneType fortuneType)
             {
+                FortuneLevel = fortuneLevel;
                 FortuneType = fortuneType;
             }
         }

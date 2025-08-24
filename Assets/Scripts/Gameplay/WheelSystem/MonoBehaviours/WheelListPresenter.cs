@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Core.BaseClasses;
 using Core.DISystem.MonoBehaviours;
-using Gameplay.SlotSystem.Base;
 using Gameplay.SlotSystem.Enums;
 using Gameplay.SlotSystem.MonoBehaviours;
 using Gameplay.SlotSystem.Scriptables;
@@ -28,9 +25,7 @@ namespace Gameplay.WheelSystem.MonoBehaviours
         #endregion
 
         #region Privates
-
         private ViewType _viewType = ViewType.Wheel;
-
         #endregion
         
         public void Initialize()
@@ -38,24 +33,31 @@ namespace Gameplay.WheelSystem.MonoBehaviours
             _slotPool = ProjectContext.Instance.Resolve<ObjectPoolManager>().SlotPool;
         }
 
-        public void Prepare(WheelDataSO wheelDataSO)
+        public void Prepare(WheelDataSO wheelDataSO, int fortuneLevel)
         {
-            CreateViews(wheelDataSO);
+            CreateViews(wheelDataSO, fortuneLevel);
             UpdateWheelImage(wheelDataSO);
         }
 
-        private void CreateViews(WheelDataSO wheelDataSO)
+        private void CreateViews(WheelDataSO wheelDataSO, int fortuneLevel)
         {
             float sliceAngle = 360f / wheelDataSO.wheelContainableSliceCount;
             
             for (int i = 0; i < wheelDataSO.wheelContainableSliceCount; i++)
             {
-                Vector3 viewPos = Utilities.GetRadiusPos(sliceAngle, i) * GetWheelRadius();
-                Vector3 viewRot = Utilities.GetRotationOnRadius(sliceAngle, i);
-                
-                var view = _slotPool.GetPooledItem((int)_viewType);
-                view.Prepare(viewPos, viewRot, _itemHolder, wheelDataSO.GetRandomItem());
+                PrepareView(wheelDataSO, fortuneLevel, sliceAngle, i);
             }
+        }
+
+        private void PrepareView(WheelDataSO wheelDataSO, int fortuneLevel, float sliceAngle, int i)
+        {
+            Vector3 viewPos = Utilities.GetRadiusPos(sliceAngle, i) * GetWheelRadius();
+            Vector3 viewRot = Utilities.GetRotationOnRadius(sliceAngle, i);
+
+            BaseRewardSO reward = wheelDataSO.GetRandomItem();
+                
+            var view = _slotPool.GetPooledItem((int)_viewType);
+            view.Prepare(viewPos, viewRot, _itemHolder, reward);
         }
 
         private float GetWheelRadius() => _wheelRadius.rect.width / 2;

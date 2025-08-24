@@ -31,7 +31,7 @@ namespace Controllers.MonoBehaviours
                 return;
             }
 
-            _zoneBarPanel.Prepare(_objectPoolManager.ZoneBarPool, _gameController.FortuneDataSO); 
+            _zoneBarPanel.Initialize(_objectPoolManager.ZoneBarPool, _gameController.FortuneDataSO); 
         }
 
 

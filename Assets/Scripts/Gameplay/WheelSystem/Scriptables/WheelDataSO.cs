@@ -22,14 +22,14 @@ namespace Gameplay.WheelSystem.Scriptables
             float totalRatio = 0;
             foreach (var itemDataSo in wheelItemContentList)
             {
-                totalRatio += itemDataSo.possibilityRatio;
+                totalRatio += itemDataSo.dropRate;
             }
 
             float randomValue = Random.Range(0, totalRatio);
             float currentRatio = 0;
             foreach (var rewardSO in wheelItemContentList)
             {
-                currentRatio += rewardSO.possibilityRatio;
+                currentRatio += rewardSO.dropRate;
                 if (randomValue <= currentRatio)
                 {
                     return rewardSO;

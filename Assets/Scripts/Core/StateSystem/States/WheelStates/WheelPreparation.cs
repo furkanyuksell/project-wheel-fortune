@@ -19,7 +19,8 @@ namespace Core.StateSystem.States.WheelStates
         public override void Start()
         {
             base.Start();
-            EventDispatcher.Raise(new IPanelEvent.OnPanelPrepare(_fortuneLevelController.GetFortuneType()));
+            EventDispatcher.Raise(new IPanelEvent.OnPanelPrepare(_fortuneLevelController.GetLevel(), _fortuneLevelController.GetFortuneType()));
+            ChangeState(WheelStateType.Ready);
         }
     }
 }

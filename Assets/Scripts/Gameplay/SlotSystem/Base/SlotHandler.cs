@@ -19,6 +19,7 @@ namespace Gameplay.SlotSystem.Base
             OnActivate(itemHolder);
             transform.localPosition = viewPos;
             transform.localEulerAngles = viewRot;
+            
             _slotView.SetModel(itemInfo);
         }
     }

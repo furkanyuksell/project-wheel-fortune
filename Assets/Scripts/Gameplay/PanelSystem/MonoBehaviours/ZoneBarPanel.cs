@@ -28,7 +28,7 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         #region Data
         private readonly Dictionary<int, (ZoneBarComponent, ZoneBarComponent)> _zoneLevelItems = new();
         #endregion
-        public void Prepare(ZoneBarPool zoneBarPool, FortuneDataSO fortuneDataSO)
+        public void Initialize(ZoneBarPool zoneBarPool, FortuneDataSO fortuneDataSO)
         {
             _zoneBarPool = zoneBarPool;
             _fortuneDataSO = fortuneDataSO;

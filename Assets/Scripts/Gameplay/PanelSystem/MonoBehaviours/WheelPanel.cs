@@ -1,11 +1,7 @@
-using System;
-using Core.DISystem.MonoBehaviours;
 using Gameplay.PanelSystem.Base;
 using Gameplay.PanelSystem.Events;
-using Gameplay.SlotSystem.MonoBehaviours;
 using Gameplay.WheelSystem.Classes;
 using Gameplay.WheelSystem.MonoBehaviours;
-using Managers.MonoBehaviours;
 using UnityEngine;
 
 namespace Gameplay.PanelSystem.MonoBehaviours
@@ -29,7 +25,7 @@ namespace Gameplay.PanelSystem.MonoBehaviours
 
         protected override void OnPanelPrepare(IPanelEvent.OnPanelPrepare eventData)
         {
-            _presenter.Prepare(_wheelDataModel.GetWheelDataSO(eventData.FortuneType));
+            _presenter.Prepare(_wheelDataModel.GetWheelDataSO(eventData.FortuneType), eventData.FortuneLevel);
         }
 
 

@@ -15,8 +15,13 @@ namespace Gameplay.SlotSystem.Base
             if (_model == null) return;
             
             _imgSlot.SetSprite(_model.rewardItem.icon);
+            _txtSlot.SetText(_model.GetRewardCount().ToString());
         }
 
+
+        public void SetCount(int rewardCount)
+        {
+        }
 
         private void OnValidate()
         {
