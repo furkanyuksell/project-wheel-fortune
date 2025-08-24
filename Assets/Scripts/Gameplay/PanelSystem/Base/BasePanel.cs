@@ -32,7 +32,7 @@ namespace Gameplay.PanelSystem.Base
                 }
             }
         }
-
+        
         protected virtual void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData) { }
     }
 }

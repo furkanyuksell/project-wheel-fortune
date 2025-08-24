@@ -19,6 +19,7 @@ namespace Gameplay.SlotSystem.Base
         #region Publics
         public BaseRewardSO rewardDataSO => _rewardDataSO;
         public RewardSlotData rewardSlotData => _rewardSlotData;
+        public Transform iconTarget => _slotView.txtSlot.transform;
         #endregion
         
         public void Prepare(Vector3 viewPos, Vector3 viewRot, Transform itemHolder, BaseRewardSO rewardDataSO)
@@ -34,6 +35,14 @@ namespace Gameplay.SlotSystem.Base
                 itemCount = _rewardDataSO.GetRewardCount()
             };
             _slotView.SetModel(_rewardSlotData);
+        }
+
+        public void Prepare(Transform slotParent, RewardSlotData slotData)
+        {
+            OnActivate(slotParent);
+            _rewardSlotData = slotData;
+
+            if (_slotView != null) _slotView.SetModel(_rewardSlotData);
         }
     }
 }

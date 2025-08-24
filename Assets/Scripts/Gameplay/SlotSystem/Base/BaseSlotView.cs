@@ -8,8 +8,14 @@ namespace Gameplay.SlotSystem.Base
 {
     public class BaseSlotView : BaseView<RewardSlotData>
     {
+        [Header("References")]
         [SerializeField] private SlotImage _imgSlot;
         [SerializeField] private SlotCountText _txtSlot;
+
+        #region Publics
+        public SlotImage imgSlot => _imgSlot;
+        public SlotCountText txtSlot => _txtSlot;
+        #endregion
 
         protected override void Refresh()
         {

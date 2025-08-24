@@ -22,18 +22,14 @@ namespace Gameplay.WheelSystem.MonoBehaviours
         [SerializeField] private RectTransform _wheelRadius;
         #endregion
         
-        #region Pool
-        private SlotPool _slotPool;
-        #endregion
-
         #region Privates
-        private SlotType _slotType = SlotType.Wheel;
         private float _sliceAngle;
         #endregion
         
-        public void Initialize()
+        public override void Initialize()
         {
-            _slotPool = ProjectContext.Instance.Resolve<ObjectPoolManager>().SlotPool;
+            base.Initialize();
+            _slotType = SlotType.Wheel;
         }
 
         public void Prepare(WheelDataSO wheelDataSO)

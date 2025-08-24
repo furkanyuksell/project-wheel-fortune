@@ -1,9 +1,11 @@
 using System;
 using Core.BaseClasses;
+using Core.DISystem.MonoBehaviours;
 using Core.ObjectPoolSystem.Base;
 using DG.Tweening;
 using Gameplay.IconSpawnSystem.Components;
 using Gameplay.IconSpawnSystem.Scriptables;
+using Managers.MonoBehaviours;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,11 +19,18 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
         [Header("Privates")]
         [SerializeField] private IconSpawnSystemDataSO _systemData;
         private RectTransform _rectTransform;
+        
+        private SpawnableIconPool _iconPool;
 
         protected override void Awake()
         { 
             base.Awake();
             _rectTransform = GetComponent<RectTransform>();
+        }
+
+        private void Start()
+        {
+            _iconPool = ProjectContext.Instance.Resolve<ObjectPoolManager>().IconPool;
         }
 
         public void InitializeItem(Sprite sprite, Vector3 spawnUIPosition, Vector3 targetPos, Transform parent, float seperationDuration, float seperationRange, float movementDurationAfterSeperation)
@@ -70,6 +79,7 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
         
         public override void ReturnToPool()
         {
+            _iconPool.ReturnItem(this);
         }
 
         public override int GetPoolId()

@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4657553554339357726, guid: cc3fe3e374edf4940b75acff809118c3, type: 3}
       propertyPath: m_Name
-      value: ui_prize_slot_holder
+      value: ui_slot_holder
       objectReference: {fileID: 0}
     - target: {fileID: 4657553554339357727, guid: cc3fe3e374edf4940b75acff809118c3, type: 3}
       propertyPath: m_Pivot.x
@@ -132,3 +132,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!224 &4229528071572538747 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4657553554670675831, guid: cc3fe3e374edf4940b75acff809118c3, type: 3}
+  m_PrefabInstance: {fileID: 8795733588157866508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4229528071912179218 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4657553554339357726, guid: cc3fe3e374edf4940b75acff809118c3, type: 3}
+  m_PrefabInstance: {fileID: 8795733588157866508}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5771160268657624768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229528071912179218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05ecac858fe4933873c11aacfd0a1bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotParent: {fileID: 4229528071572538747}

@@ -486,10 +486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 199697981781589670}
     m_Modifications:
-    - target: {fileID: 4229528071572538747, guid: 2c70f4f78edc04e41b01894795a5b2a8, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4229528071912179218, guid: 2c70f4f78edc04e41b01894795a5b2a8, type: 3}
       propertyPath: m_Name
       value: ui_slot_holder
