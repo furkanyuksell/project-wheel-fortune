@@ -45,9 +45,7 @@ namespace Controllers.MonoBehaviours
             if (!_zoneBarPanel)
             {
                 _zoneBarPanel = FindObjectOfType<ZoneBarPanel>();
-                if (!_zoneBarPanel) Debug.LogError("ZoneBarPanel not found in the scene. Please assign it in the inspector or ensure it exists in the scene.");
             }
-            
         }
 #endif
     }

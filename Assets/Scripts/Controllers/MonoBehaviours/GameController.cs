@@ -22,6 +22,7 @@ namespace Controllers.MonoBehaviours
         private ZoneBarController _zoneBarController;
         private PrizeBarController _prizeBarController;
         private FortuneLevelController _fortuneLevelController;
+        private CurrencyController _currencyController;
         #endregion
 
         #region Publics
@@ -48,6 +49,7 @@ namespace Controllers.MonoBehaviours
             _zoneBarController.Initialize();
             _prizeBarController.Initialize();
             _fortuneLevelController.Initialize();
+            _currencyController.Initialize();
             
             _wheelController.StartState();
         }
@@ -58,6 +60,7 @@ namespace Controllers.MonoBehaviours
             _zoneBarController = ResolveDependency<ZoneBarController>();
             _prizeBarController = ResolveDependency<PrizeBarController>();
             _fortuneLevelController = ResolveDependency<FortuneLevelController>();
+            _currencyController = ResolveDependency<CurrencyController>();
         }
     }
 }

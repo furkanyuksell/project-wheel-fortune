@@ -133,8 +133,6 @@ namespace Controllers.MonoBehaviours
             if (_wheelPanel == null)
             {
                 _wheelPanel = FindObjectOfType<WheelPanel>();
-                if (_wheelPanel == null) 
-                    Debug.LogError("WheelHandler not found in the scene. Please ensure it is present.");
             }
         }
 #endif

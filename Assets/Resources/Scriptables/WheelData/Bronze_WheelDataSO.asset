@@ -19,10 +19,10 @@ MonoBehaviour:
   wheelContainableSliceCount: 8
   wheelItemContentList:
   - {fileID: 11400000, guid: 16ecd66370481495bad239a850ee2fab, type: 2}
-  - {fileID: 11400000, guid: f567ee626ccdd4ba1a3a6060462aebb9, type: 2}
-  - {fileID: 11400000, guid: 65850487b2c784dbfa6b26db0058c8ad, type: 2}
-  - {fileID: 11400000, guid: 3d7eaca99e7dc40fb912c93e4f288fa6, type: 2}
+  - {fileID: 11400000, guid: f93e9d4847b1045da8b9b48a41a69e19, type: 2}
+  - {fileID: 11400000, guid: fb5ec6e7354cc4a59bbf90db0fbeab14, type: 2}
+  - {fileID: 11400000, guid: 20fb72b70fcd64e588c699469e574b68, type: 2}
   - {fileID: 11400000, guid: ca6286b801c474cd796e64c835521bbe, type: 2}
-  - {fileID: 11400000, guid: d9a26c547d17049e5ba69407a6c1ff01, type: 2}
-  - {fileID: 11400000, guid: 3e5aebcd9ed824ed99a5072802773f09, type: 2}
-  - {fileID: 11400000, guid: 0e5f6dd0a188b46c7a906d397a2e52d3, type: 2}
+  - {fileID: 11400000, guid: 967ad95fdf79242b78cefecbb77aa934, type: 2}
+  - {fileID: 11400000, guid: e208305452c514786ab79c203aacc356, type: 2}
+  - {fileID: 11400000, guid: 55cbe024354eb4c46afeb749f5f4a919, type: 2}

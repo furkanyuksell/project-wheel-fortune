@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb148af4ec54713ace5a7ada666bfa5, type: 3}
   m_Name: Cash_RewardSO
   m_EditorClassIdentifier: 
-  rewardItem:
+  rewardItemData:
     name: Cash
-    icon: {fileID: 0}
-    rewardType: 0
+    icon: {fileID: 21300000, guid: a69c3b5aedc2a4a089aa8a62e3c75391, type: 3}
+    rewardType: 6
   rarityType: 0
-  possibilityRatio: 0
+  dropRate: 66.6
+  minMaxCount: {x: 100, y: 500}
   currencyType: 2

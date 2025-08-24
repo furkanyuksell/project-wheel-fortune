@@ -12,7 +12,6 @@ namespace Gameplay.WheelSystem.Scriptables
         public FortuneType fortuneType;
         public Sprite wheelSprite;
         public Sprite wheelIndicatorSprite;
-        public bool isRiskFree;
         public int wheelContainableSliceCount;
         public List<BaseRewardSO> wheelItemContentList;
         

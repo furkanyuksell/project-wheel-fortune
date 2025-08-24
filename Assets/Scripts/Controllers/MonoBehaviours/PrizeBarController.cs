@@ -12,6 +12,16 @@ namespace Controllers.MonoBehaviours
     {
         [Header("References")]
         [SerializeField] private PrizeBarPanel _prizeBarPanel;
+
+        #region Privates
+        private ReviveController _reviveController;
+        #endregion
+
+        protected override void ResolveDependencies()
+        {
+            _reviveController = ResolveDependency<ReviveController>();
+        }
+
         public override void Initialize()
         {
             _prizeBarPanel.Initialize();
@@ -21,7 +31,7 @@ namespace Controllers.MonoBehaviours
         {
             if (rewardSlotData.itemData.rewardType == RewardType.Death)
             {
-                Debug.Log("DEATH");
+                _reviveController.ShowRevivePanel();
                 return;
             }
     
@@ -39,8 +49,6 @@ namespace Controllers.MonoBehaviours
             if (_prizeBarPanel == null)
             {
                 _prizeBarPanel = FindObjectOfType<PrizeBarPanel>();
-                if (_prizeBarPanel == null) 
-                    Debug.LogError("PrizeBarPanel not found in the scene. Please ensure it is present.");
             }
         }
 #endif

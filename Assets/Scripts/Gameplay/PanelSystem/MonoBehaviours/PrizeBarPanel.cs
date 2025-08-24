@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using Controllers.Enums;
+using Controllers.MonoBehaviours;
 using Core.EventBusSystem.Utils;
 using Core.StateSystem.Enums;
 using Core.StateSystem.Events;
@@ -17,10 +19,11 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         [Header("References")]
         [SerializeField] private PrizeBarSlotListPresenter _presenter;
         [SerializeField] private ExitButton _exitButton;
-        
+
         public void Initialize()
         {
             _presenter.Initialize();
+            _exitButton.SetOnClickAction(OnAddCurrencies);
         }
 
         protected override void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData)
@@ -40,6 +43,11 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         {
             yield return null; // for preventing immediate state change
             EventDispatcher.Raise(new IStateMachineEvent<WheelStateType>.OnChangeState(WheelStateType.Finished));
+        }
+        
+        private void OnAddCurrencies()
+        {
+            _presenter.AddCurrencies();   
         }
 
 #if UNITY_EDITOR

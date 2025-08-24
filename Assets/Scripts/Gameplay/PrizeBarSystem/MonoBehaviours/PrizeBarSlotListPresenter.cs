@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using Controllers.Events;
 using Core.BaseClasses;
 using Core.EventBusSystem.Utils;
 using Gameplay.IconSpawnSystem.Events;
@@ -61,5 +63,22 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
             ));
         }
 
+        public void AddCurrencies()
+        {
+            int amount = 0;
+            foreach (var prizeSlotHandler in _slots)
+            {
+                if (prizeSlotHandler.rewardSlotData.itemData.rewardType == RewardType.Gold)
+                {
+                    amount += prizeSlotHandler.rewardSlotData.itemCount * 5;   
+                }
+                else if (prizeSlotHandler.rewardSlotData.itemData.rewardType == RewardType.Cash)
+                {
+                    amount += prizeSlotHandler.rewardSlotData.itemCount * 2;   
+                }
+            }
+
+            EventDispatcher.Raise(new IControllerEvent.OnAddCurrency(amount));
+        }
     }
 }
