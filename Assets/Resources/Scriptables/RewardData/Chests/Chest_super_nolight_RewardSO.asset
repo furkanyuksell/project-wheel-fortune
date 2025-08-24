@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Chest_super_nolight_RewardSO
   m_EditorClassIdentifier: 
   rewardItemData:
-    name: ttt
-    icon: {fileID: 21300000, guid: 445feee0ed9f94f498a3b0b3f5fae0c7, type: 3}
+    name: Chest Super
+    icon: {fileID: 21300000, guid: 17ca96d51db9649d4a4173af2f66a199, type: 3}
     rewardType: 8
   rarityType: 0
   dropRate: 10

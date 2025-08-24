@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11c25ec43dcd4bb195067d0907435f54, type: 3}
-  m_Name: Chest_bronze_nolight_RewardSO
+  m_Name: Weapon_Gun_Smg_tier3_RewardSO
   m_EditorClassIdentifier: 
   rewardItemData:
-    name: Chest Bronze
-    icon: {fileID: 21300000, guid: c9f26cb7787ab418cb2b5d993ffda284, type: 3}
-    rewardType: 8
+    name: Smg
+    icon: {fileID: 21300000, guid: 3d33613b6170e4489b723f40cd9e963a, type: 3}
+    rewardType: 7
   rarityType: 0
-  dropRate: 10
+  dropRate: 11.8
   minMaxCount: {x: 1, y: 1}

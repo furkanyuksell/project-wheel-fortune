@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Chest_standart_nolight_RewardSO
   m_EditorClassIdentifier: 
   rewardItemData:
-    name: ttt
-    icon: {fileID: 21300000, guid: 445feee0ed9f94f498a3b0b3f5fae0c7, type: 3}
+    name: Chest Standard
+    icon: {fileID: 21300000, guid: 997ad5202fdd2479992fe9dcfee315d0, type: 3}
     rewardType: 8
   rarityType: 0
   dropRate: 10
