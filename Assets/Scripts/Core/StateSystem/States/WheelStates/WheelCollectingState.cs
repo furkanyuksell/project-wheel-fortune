@@ -1,11 +1,25 @@
+using Controllers.MonoBehaviours;
+using Core.DISystem.Interfaces;
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
+using Gameplay.SlotSystem.Classes;
+using UnityEngine;
 
 namespace Core.StateSystem.States.WheelStates
 {
     public class WheelCollectingState : WheelState
     {
-        public WheelCollectingState() : base(WheelStateType.Collecting)
+        private PrizeBarController _prizeBarController;
+        public WheelCollectingState(PrizeBarController prizeBarController) : base(WheelStateType.Collecting)
         {
+            _prizeBarController = prizeBarController;
+        }
+
+        public override void Start(DataTransporter data = null)
+        {
+            base.Start(data);
+            RewardSlotData rewardItemData = data!.Get<RewardSlotData>("reward");
+            _prizeBarController.CheckRewardData(rewardItemData);
         }
     }
 }

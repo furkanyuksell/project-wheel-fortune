@@ -1,8 +1,13 @@
 using Core.EventBusSystem.Classes;
 using Core.EventBusSystem.Utils;
+using Core.StateSystem.Classes;
+using Core.StateSystem.Enums;
+using Core.StateSystem.Events;
 using Gameplay.AnimationSystem.Classes;
 using Gameplay.PanelSystem.Base;
 using Gameplay.PanelSystem.Events;
+using Gameplay.SlotSystem.Classes;
+using Gameplay.SlotSystem.MonoBehaviours;
 using Gameplay.WheelSystem.Classes;
 using Gameplay.WheelSystem.Components;
 using Gameplay.WheelSystem.Events;
@@ -59,7 +64,6 @@ namespace Gameplay.PanelSystem.MonoBehaviours
 
         protected override void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData)
         {
-            _spinButton.ClickableStatus(false);
             _presenter.Prepare(_wheelDataModel.GetWheelDataSO(eventData.FortuneType));
         }
 
@@ -70,8 +74,18 @@ namespace Gameplay.PanelSystem.MonoBehaviours
 
         private void StartWheelSpin()
         {
+            _spinButton.ClickableStatus(false);
             var result = _presenter.GetSpinResult();
-            _wheelAnimator.PlaySpinAnimation(result.Item2);
+            _wheelAnimator.PlaySpinAnimation(result.Item2, ()=> OnSpinComplete(result.Item1));
+        }
+
+        private void OnSpinComplete(RewardSlotData resultItem)
+        {
+            DataTransporter dataTransporter = new DataTransporter();
+            dataTransporter.Set("reward", resultItem);
+            
+            EventDispatcher.Raise(new IStateMachineEvent<WheelStateType>.OnChangeState(
+                WheelStateType.Stopped, dataTransporter));
         }
 
 

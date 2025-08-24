@@ -1,5 +1,6 @@
 using Core.EventBusSystem.Utils;
 using Core.SceneManagementSystem.Interfaces;
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ namespace Core.StateSystem.States.GameStates
         {
         }
 
-        public override void Start()
+        public override void Start(DataTransporter data = null)
         {
-            base.Start();
+            base.Start(data);
             Debug.Log("GameScene Initialization Start");
             EventDispatcher.Raise(new ISceneEvent.OnGameSceneInitialization());
             ChangeState(GameStateType.Play);

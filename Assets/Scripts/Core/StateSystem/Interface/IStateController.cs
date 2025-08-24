@@ -10,8 +10,8 @@ namespace Core.StateSystem.Interface
         TStateType CurrentState { get; set; } 
         StateMachine<TStateType> StateMachine { get; set; }
         void InitializeStates();
-        void ChangeState(TStateType newStateType);
+        void ChangeState(TStateType newStateType, DataTransporter data);
         void StateChanged(TStateType previousStateType, TStateType newStateType);
-        EventBinding<IStateMachineEvent.OnChangeState<TStateType>> OnChangeStateBinding { get; set; }
+        EventBinding<IStateMachineEvent<TStateType>.OnChangeState> OnChangeStateBinding { get; set; }
     }
 }

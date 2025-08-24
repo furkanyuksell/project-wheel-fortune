@@ -13,12 +13,12 @@ namespace Gameplay.SlotSystem.Base
 
         #region Privates
         private BaseRewardSO _rewardDataSO;
-        private RewardSlotData _slotData;
+        private RewardSlotData _rewardSlotData;
         #endregion
 
         #region Publics
         public BaseRewardSO rewardDataSO => _rewardDataSO;
-        public RewardSlotData slotData => _slotData;
+        public RewardSlotData rewardSlotData => _rewardSlotData;
         #endregion
         
         public void Prepare(Vector3 viewPos, Vector3 viewRot, Transform itemHolder, BaseRewardSO rewardDataSO)
@@ -28,12 +28,12 @@ namespace Gameplay.SlotSystem.Base
             transform.localEulerAngles = viewRot;
             _rewardDataSO = rewardDataSO;
 
-            _slotData = new RewardSlotData
+            _rewardSlotData = new RewardSlotData
             {
                 itemData = _rewardDataSO.rewardItemData,
                 itemCount = _rewardDataSO.GetRewardCount()
             };
-            _slotView.SetModel(_slotData);
+            _slotView.SetModel(_rewardSlotData);
         }
     }
 }

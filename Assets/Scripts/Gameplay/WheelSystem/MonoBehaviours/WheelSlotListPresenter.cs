@@ -89,7 +89,7 @@ namespace Gameplay.WheelSystem.MonoBehaviours
                 currentRatio += wheelSlotHandler.rewardDataSO.dropRate;
                 if (randomValue <= currentRatio)
                 {
-                    return (wheelSlotHandler.slotData, _sliceAngle * _slots.IndexOf(wheelSlotHandler));
+                    return (wheelSlotHandler.rewardSlotData, _sliceAngle * _slots.IndexOf(wheelSlotHandler));
                 }
             }
             return (null, 0);   

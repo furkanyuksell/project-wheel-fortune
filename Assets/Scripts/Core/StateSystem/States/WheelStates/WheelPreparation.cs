@@ -1,5 +1,6 @@
 using Controllers.MonoBehaviours;
 using Core.EventBusSystem.Utils;
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 using Gameplay.PanelSystem.Events;
 using Gameplay.WheelSystem.Events;
@@ -17,9 +18,9 @@ namespace Core.StateSystem.States.WheelStates
             _fortuneLevelController = fortuneLevelController;
         }
 
-        public override void Start()
+        public override void Start(DataTransporter data = null)
         {
-            base.Start();
+            base.Start(data);
             EventDispatcher.Raise(new IWheelEvent.OnWheelPreparation(_fortuneLevelController.GetLevel(), _fortuneLevelController.GetFortuneType()));
             ChangeState(WheelStateType.Ready);
         }

@@ -1,3 +1,4 @@
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 
 namespace Core.StateSystem.States.GameStates
@@ -8,9 +9,9 @@ namespace Core.StateSystem.States.GameStates
         {
         }
 
-        public override void Start()
+        public override void Start(DataTransporter data = null)
         {
-            base.Start();
+            base.Start(data);
             ChangeState(GameStateType.MainMenu);
         }
 

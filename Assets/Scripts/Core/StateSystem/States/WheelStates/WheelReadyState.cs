@@ -1,4 +1,5 @@
 using Core.EventBusSystem.Utils;
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 using Gameplay.WheelSystem.Events;
 
@@ -10,9 +11,9 @@ namespace Core.StateSystem.States.WheelStates
         {
         }
 
-        public override void Start()
+        public override void Start(DataTransporter data = null)
         {
-            base.Start();
+            base.Start(data);
             EventDispatcher.Raise(new IWheelEvent.OnWheelReady());
         }
     }

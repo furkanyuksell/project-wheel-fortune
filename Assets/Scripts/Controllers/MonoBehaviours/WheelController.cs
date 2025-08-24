@@ -7,6 +7,7 @@ using Core.StateSystem.Events;
 using Core.StateSystem.Interface;
 using Core.StateSystem.States.WheelStates;
 using Gameplay.PanelSystem.MonoBehaviours;
+using Gameplay.SlotSystem.Classes;
 using Gameplay.WheelSystem.Classes;
 using Gameplay.WheelSystem.MonoBehaviours;
 using UnityEngine;
@@ -27,6 +28,7 @@ namespace Controllers.MonoBehaviours
         #region Controllers
         private GameController _gameController;
         private FortuneLevelController _fortuneLevelController;
+        private PrizeBarController _prizeBarController;
         #endregion
 
         #region State Machine Implamentation
@@ -41,7 +43,7 @@ namespace Controllers.MonoBehaviours
         #endregion
 
         #region Events
-        public EventBinding<IStateMachineEvent.OnChangeState<WheelStateType>> OnChangeStateBinding { get; set; }
+        public EventBinding<IStateMachineEvent<WheelStateType>.OnChangeState> OnChangeStateBinding { get; set; }
         #endregion
 
         private void Awake()
@@ -53,6 +55,7 @@ namespace Controllers.MonoBehaviours
         {
             _gameController = ResolveDependency<GameController>();
             _fortuneLevelController = ResolveDependency<FortuneLevelController>();
+            _prizeBarController = ResolveDependency<PrizeBarController>();
         }
 
         protected override void Register(bool isActive)
@@ -60,7 +63,7 @@ namespace Controllers.MonoBehaviours
             base.Register(isActive);
             if (isActive)
             {
-                OnChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent.OnChangeState<WheelStateType>>(OnChangeState);
+                OnChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent<WheelStateType>.OnChangeState>(OnChangeState);
             }
             else
             {
@@ -87,7 +90,7 @@ namespace Controllers.MonoBehaviours
             _readyState = new WheelReadyState();
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
-            _collectingState = new WheelCollectingState();
+            _collectingState = new WheelCollectingState(_prizeBarController);
             _finishedState = new WheelFinishedState();
 
             StateMachine.RegisterState(_preparationState);
@@ -103,14 +106,14 @@ namespace Controllers.MonoBehaviours
             ChangeState(WheelStateType.Preparation);
         }
         
-        private void OnChangeState(IStateMachineEvent.OnChangeState<WheelStateType> changeStateEvent)
+        private void OnChangeState(IStateMachineEvent<WheelStateType>.OnChangeState eventData)
         {
-            ChangeState(changeStateEvent.StateType);
+            ChangeState(eventData.StateType, eventData.Data);
         }
 
-        public void ChangeState(WheelStateType newStateType)
+        public void ChangeState(WheelStateType newStateType, DataTransporter data = null)
         {
-            StateMachine.ChangeState(newStateType);
+            StateMachine.ChangeState(newStateType, data);
         }
 
         public void StateChanged(WheelStateType previousStateType, WheelStateType newStateType)

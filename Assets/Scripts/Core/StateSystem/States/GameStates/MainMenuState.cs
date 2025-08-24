@@ -1,3 +1,4 @@
+using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
 
 namespace Core.StateSystem.States.GameStates
@@ -7,16 +8,6 @@ namespace Core.StateSystem.States.GameStates
         public MainMenuState() : base(GameStateType.MainMenu)
         {
             
-        }
-
-        public override void Start()
-        {
-            base.Start();
-        }
-
-        public override void End()
-        {
-            base.End();
         }
     }
 }

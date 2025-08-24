@@ -30,7 +30,7 @@ namespace Core.StateSystem.Classes
                 throw new ArgumentException($"State {state.StateType} is already registered.");
         }
 
-        public void ChangeState(TStateType newStateType)
+        public void ChangeState(TStateType newStateType, DataTransporter data = null)
         {
             if (_states.TryGetValue(newStateType, out var newState))
             {
@@ -40,14 +40,13 @@ namespace Core.StateSystem.Classes
                 CurrentStateType = newStateType;
                 
                 _controller.StateChanged(previousStateType, newStateType);
-                CurrentState.Start();
+                CurrentState.Start(data);
             }
             else
             {
                 throw new ArgumentException($"State {newStateType} is not registered.");
             }
         }
-
         public T GetState<T>(TStateType stateType) where T : class, IState<TStateType>
         {
             return _states.TryGetValue(stateType, out var state) ? state as T : null;

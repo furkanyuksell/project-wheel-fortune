@@ -27,7 +27,7 @@ namespace Managers.MonoBehaviours
 
         #region Events
 
-        public EventBinding<IStateMachineEvent.OnChangeState<GameStateType>> OnChangeStateBinding { get; set; }
+        public EventBinding<IStateMachineEvent<GameStateType>.OnChangeState> OnChangeStateBinding { get; set; }
 
         #endregion
         
@@ -48,7 +48,7 @@ namespace Managers.MonoBehaviours
             base.Register(isActive);
             if(isActive)
             {
-                OnChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent.OnChangeState<GameStateType>>(OnChangeState);
+                OnChangeStateBinding = EventDispatcher.Subscribe<IStateMachineEvent<GameStateType>.OnChangeState>(OnChangeState);
             }
             else
             {
@@ -76,12 +76,12 @@ namespace Managers.MonoBehaviours
             ChangeState(GameStateType.AppStart);
         }
 
-        private void OnChangeState(IStateMachineEvent.OnChangeState<GameStateType> onChangeState)
+        private void OnChangeState(IStateMachineEvent<GameStateType>.OnChangeState onChangeState)
         {
             ChangeState(onChangeState.StateType);
         }
 
-        public void ChangeState(GameStateType stateType)
+        public void ChangeState(GameStateType stateType, DataTransporter data = null)
         {
             StateMachine.ChangeState(stateType);
         }
