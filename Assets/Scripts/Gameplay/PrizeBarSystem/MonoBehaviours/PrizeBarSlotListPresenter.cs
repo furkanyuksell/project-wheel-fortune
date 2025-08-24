@@ -24,6 +24,7 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
         {
             BaseSlotHandler baseSlotHandler = _slotPool.GetPooledItem((int)_slotType);
             baseSlotHandler.Prepare(_slotParent, rewardSlotData);
+            _slots.Add(baseSlotHandler as PrizeSlotHandler);
             
             StartCoroutine(SpawnIconAfterLayoutUpdate(rewardSlotData, baseSlotHandler));
         }
