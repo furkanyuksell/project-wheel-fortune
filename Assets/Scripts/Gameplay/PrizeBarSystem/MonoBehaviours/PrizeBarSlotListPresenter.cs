@@ -22,11 +22,32 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
 
         public void AddReward(RewardSlotData rewardSlotData)
         {
-            BaseSlotHandler baseSlotHandler = _slotPool.GetPooledItem((int)_slotType);
-            baseSlotHandler.Prepare(_slotParent, rewardSlotData);
-            _slots.Add(baseSlotHandler as PrizeSlotHandler);
+            if (CheckRewardExists(rewardSlotData, out var baseSlotHandler))
+            {
+                baseSlotHandler.UpdateCount(rewardSlotData.itemCount);
+            }
+            else
+            {
+                baseSlotHandler = _slotPool.GetPooledItem((int)_slotType);
+                baseSlotHandler.Prepare(_slotParent, rewardSlotData);
+                _slots.Add(baseSlotHandler as PrizeSlotHandler);
+            }
             
             StartCoroutine(SpawnIconAfterLayoutUpdate(rewardSlotData, baseSlotHandler));
+        }
+
+        private bool CheckRewardExists(RewardSlotData rewardSlotData, out BaseSlotHandler baseSlotHandler)
+        {
+            baseSlotHandler = null;
+            foreach (var slot in _slots)
+            {
+                if (slot.rewardSlotData.itemData.name == rewardSlotData.itemData.name)
+                {
+                    baseSlotHandler = slot;
+                    return true;
+                }
+            }
+            return false;
         }
 
         private IEnumerator SpawnIconAfterLayoutUpdate(RewardSlotData rewardSlotData, BaseSlotHandler baseSlotHandler)

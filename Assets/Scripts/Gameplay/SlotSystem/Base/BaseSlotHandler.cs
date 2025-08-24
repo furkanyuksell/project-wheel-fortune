@@ -44,5 +44,11 @@ namespace Gameplay.SlotSystem.Base
 
             if (_slotView != null) _slotView.SetModel(_rewardSlotData);
         }
+
+        public void UpdateCount(int itemCount)
+        {
+            _rewardSlotData.itemCount += itemCount;
+            _slotView.SetModel(_rewardSlotData);
+        }
     }
 }
