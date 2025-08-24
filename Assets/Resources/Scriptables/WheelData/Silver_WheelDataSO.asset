@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Silver_WheelDataSO
   m_EditorClassIdentifier: 
   fortuneType: 2
-  wheelSprite: {fileID: 21300000, guid: c965f5c8938ff4a3bbe33b3693003b8c, type: 3}
-  wheelIndicatorSprite: {fileID: 21300000, guid: d92b084478ea840c7a89d1938895e1e0, type: 3}
+  wheelSprite: {fileID: 21300000, guid: df98ddc455ce84f2cb2161d963f843cf, type: 3}
+  wheelIndicatorSprite: {fileID: 21300000, guid: c31f2ef6ca29346a4862b64bd2965cde, type: 3}
   isRiskFree: 0
   wheelContainableSliceCount: 8
   wheelItemContentList:

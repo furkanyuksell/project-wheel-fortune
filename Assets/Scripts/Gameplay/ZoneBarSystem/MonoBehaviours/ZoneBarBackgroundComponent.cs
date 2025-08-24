@@ -9,6 +9,11 @@ namespace Gameplay.ZoneBarSystem.MonoBehaviours
         [Header("References")]
         [SerializeField] private ZoneBackgroundImage _zoneBackgroundImage;
         
+        public void UpdateBackground(Sprite zoneBg)
+        {
+            _zoneBackgroundImage.SetSprite(zoneBg);
+        }
+        
         #region Pool Implementation
         public override void ReturnToPool()
         {

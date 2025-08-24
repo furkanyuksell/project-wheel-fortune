@@ -6,6 +6,7 @@ using Gameplay.WheelSystem.Events;
 using Gameplay.ZoneBarSystem;
 using Gameplay.ZoneBarSystem.Base;
 using Gameplay.ZoneBarSystem.MonoBehaviours;
+using Gameplay.ZoneBarSystem.Scriptables;
 using Managers.MonoBehaviours;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         [Header("References")]
         [SerializeField] private RectTransform _bgContent;
         [SerializeField] private RectTransform _textContent;
+        [SerializeField] private ZoneBarDataSO _zoneBarDataSO;
         #endregion
 
         #region Privates
@@ -62,6 +64,8 @@ namespace Gameplay.PanelSystem.MonoBehaviours
 
         protected override void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData)
         {
+            (_zoneLevelItems[eventData.FortuneLevel-1].Item1 as ZoneBarBackgroundComponent)!
+                .UpdateBackground(_zoneBarDataSO.GetZoneBackground(eventData.FortuneType));
             _zoneBarAnimator.PlayBarAnimation();
         }
     }
