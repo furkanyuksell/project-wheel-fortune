@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c25ec43dcd4bb195067d0907435f54, type: 3}
   m_Name: Chest_bronze_nolight_RewardSO
   m_EditorClassIdentifier: 
-  rewardItem:
-    name: Chest Bronze
-    icon: {fileID: 21300000, guid: c9f26cb7787ab418cb2b5d993ffda284, type: 3}
+  rewardItemData:
+    name: ttt
+    icon: {fileID: 21300000, guid: 445feee0ed9f94f498a3b0b3f5fae0c7, type: 3}
     rewardType: 8
   rarityType: 0
-  possibilityRatio: 10
+  dropRate: 10
+  minMaxCount: {x: 1, y: 1}

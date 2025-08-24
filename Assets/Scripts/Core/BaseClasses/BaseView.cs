@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Core.BaseClasses
 {
-    public abstract class BaseView<TModel> : BaseBehaviour where TModel : ScriptableObject
+    public abstract class BaseView<TModel> : BaseBehaviour where TModel : class
     {
         protected TModel _model;
 

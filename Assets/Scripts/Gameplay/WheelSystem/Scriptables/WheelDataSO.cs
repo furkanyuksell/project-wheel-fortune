@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Controllers.Enums;
 using Gameplay.SlotSystem.Scriptables;
-using Gameplay.WheelSystem.Enums;
 using UnityEngine;
 using UnityEngine.Serialization;
 

@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 namespace Gameplay.SlotSystem.Classes
 {
     [Serializable]
-    public class RewardItem
+    public class RewardItemData
     {
         public string name;
         public Sprite icon;

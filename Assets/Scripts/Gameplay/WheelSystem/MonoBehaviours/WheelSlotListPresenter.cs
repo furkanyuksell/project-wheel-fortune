@@ -1,5 +1,7 @@
 using Core.BaseClasses;
 using Core.DISystem.MonoBehaviours;
+using Gameplay.SlotSystem.Base;
+using Gameplay.SlotSystem.Classes;
 using Gameplay.SlotSystem.Enums;
 using Gameplay.SlotSystem.MonoBehaviours;
 using Gameplay.SlotSystem.Scriptables;
@@ -11,7 +13,7 @@ using Utils;
 
 namespace Gameplay.WheelSystem.MonoBehaviours
 {
-    public class WheelListPresenter : BaseListPresenter<WheelSlotView, BaseRewardSO>
+    public class WheelSlotListPresenter : BaseSlotListPresenter<WheelSlotHandler>
     {
         #region Fields
         [Header("References")] 
@@ -25,7 +27,8 @@ namespace Gameplay.WheelSystem.MonoBehaviours
         #endregion
 
         #region Privates
-        private ViewType _viewType = ViewType.Wheel;
+        private SlotType _slotType = SlotType.Wheel;
+        private float _sliceAngle;
         #endregion
         
         public void Initialize()
@@ -33,31 +36,32 @@ namespace Gameplay.WheelSystem.MonoBehaviours
             _slotPool = ProjectContext.Instance.Resolve<ObjectPoolManager>().SlotPool;
         }
 
-        public void Prepare(WheelDataSO wheelDataSO, int fortuneLevel)
+        public void Prepare(WheelDataSO wheelDataSO)
         {
-            CreateViews(wheelDataSO, fortuneLevel);
+            CreateViews(wheelDataSO);
             UpdateWheelImage(wheelDataSO);
         }
 
-        private void CreateViews(WheelDataSO wheelDataSO, int fortuneLevel)
+        private void CreateViews(WheelDataSO wheelDataSO)
         {
-            float sliceAngle = 360f / wheelDataSO.wheelContainableSliceCount;
+            _sliceAngle = 360f / wheelDataSO.wheelContainableSliceCount;
             
             for (int i = 0; i < wheelDataSO.wheelContainableSliceCount; i++)
             {
-                PrepareView(wheelDataSO, fortuneLevel, sliceAngle, i);
+                PrepareView(wheelDataSO, _sliceAngle, i);
             }
         }
 
-        private void PrepareView(WheelDataSO wheelDataSO, int fortuneLevel, float sliceAngle, int i)
+        private void PrepareView(WheelDataSO wheelDataSO, float sliceAngle, int i)
         {
-            Vector3 viewPos = Utilities.GetRadiusPos(sliceAngle, i) * GetWheelRadius();
-            Vector3 viewRot = Utilities.GetRotationOnRadius(sliceAngle, i);
+            Vector3 slotPos = Utilities.GetRadiusPos(sliceAngle, i) * GetWheelRadius();
+            Vector3 slotRot = Utilities.GetRotationOnRadius(sliceAngle, i);
 
             BaseRewardSO reward = wheelDataSO.GetRandomItem();
                 
-            var view = _slotPool.GetPooledItem((int)_viewType);
-            view.Prepare(viewPos, viewRot, _itemHolder, reward);
+            BaseSlotHandler slotHandler = _slotPool.GetPooledItem((int)_slotType);
+            slotHandler.Prepare(slotPos, slotRot, _itemHolder, reward);
+            _slots.Add(slotHandler as WheelSlotHandler);
         }
 
         private float GetWheelRadius() => _wheelRadius.rect.width / 2;
@@ -67,6 +71,28 @@ namespace Gameplay.WheelSystem.MonoBehaviours
                 _wheelImage.SetSprite(wheelDataSo.wheelSprite);
             else
                 Debug.LogWarning("WheelImage reference is not set in WheelListPresenter.");
+        }
+        public (RewardSlotData, float) GetSpinResult()
+        {
+            float dropRate = 0;
+            foreach (var wheelSlotHandler in _slots)
+            {
+                dropRate += wheelSlotHandler.rewardDataSO.dropRate;
+            }
+            
+            float randomValue = Random.Range(0, dropRate);
+            
+            float currentRatio = 0;
+
+            foreach (var wheelSlotHandler in _slots)
+            {
+                currentRatio += wheelSlotHandler.rewardDataSO.dropRate;
+                if (randomValue <= currentRatio)
+                {
+                    return (wheelSlotHandler.slotData, _sliceAngle * _slots.IndexOf(wheelSlotHandler));
+                }
+            }
+            return (null, 0);   
         }
 
 #if UNITY_EDITOR

@@ -1,3 +1,4 @@
+using System;
 using Core.ComponentSystem.Base;
 using TMPro;
 using UnityEngine;
@@ -7,9 +8,14 @@ namespace Core.ComponentSystem.Components
 {
     public abstract class ButtonComponent : CustomUIComponentBase
     {
+        [Header("References")]
         [SerializeField] private Button _button;
         [SerializeField] private TextMeshProUGUI _txtContent;
 
+        #region Privates
+        private Action _onClickAction;
+        #endregion
+        
         protected override void Setup()
         {
             if (!_button) _button = GetComponent<Button>();
@@ -25,12 +31,18 @@ namespace Core.ComponentSystem.Components
         {
             _button.onClick.AddListener(OnClick);
         }
+        
+        public void SetOnClickAction(Action onClick)
+        {
+            _onClickAction = onClick;
+        }
 
         protected virtual void OnClick()
         {
+            _onClickAction?.Invoke();
         }
-        
-        protected void SetInteractable(bool value)
+
+        public void SetInteractable(bool value)
         {
             _button.interactable = value;
         }
@@ -38,10 +50,6 @@ namespace Core.ComponentSystem.Components
         protected virtual void SetText(string text)
         {
             _txtContent.text = text;
-        }
-
-        public void SetTextFromSO(string text)
-        {
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Gameplay.SlotSystem.Scriptables
 {
     public abstract class BaseRewardSO : ScriptableObject
     {
-        public RewardItem rewardItem;
+        public RewardItemData rewardItemData;
         public RarityType rarityType;
         [Range(0, 100)] public float dropRate;
         public Vector2Int minMaxCount = new(1, 1);   

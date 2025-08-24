@@ -1,5 +1,5 @@
 using Controllers.Base;
-using Gameplay.WheelSystem.Enums;
+using Controllers.Enums;
 using UnityEngine;
 
 namespace Controllers.MonoBehaviours

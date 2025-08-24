@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay.SlotSystem.MonoBehaviours
 {
-    public class WheelSlotHandler : SlotHandler
+    public class WheelSlotHandler : BaseSlotHandler
     {
         public override void ReturnToPool()
         {

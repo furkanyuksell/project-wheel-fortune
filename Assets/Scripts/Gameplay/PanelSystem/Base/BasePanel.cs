@@ -14,14 +14,14 @@ namespace Gameplay.PanelSystem.Base
 
         
         #region Events
-        private EventBinding<IPanelEvent.OnPanelPrepare> _onPanelPrepareBinding;
+        private EventBinding<IWheelEvent.OnWheelPreparation> _onPanelPrepareBinding;
         #endregion
         
         protected override void Register(bool isActive)
         {
             if (isActive)
             {
-                _onPanelPrepareBinding = EventDispatcher.Subscribe<IPanelEvent.OnPanelPrepare>(OnPanelPrepare);
+                _onPanelPrepareBinding = EventDispatcher.Subscribe<IWheelEvent.OnWheelPreparation>(OnPanelPrepare);
             }
             else
             {
@@ -33,6 +33,6 @@ namespace Gameplay.PanelSystem.Base
             }
         }
 
-        protected virtual void OnPanelPrepare(IPanelEvent.OnPanelPrepare eventData) { }
+        protected virtual void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData) { }
     }
 }

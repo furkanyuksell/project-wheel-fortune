@@ -1,4 +1,4 @@
-namespace Gameplay.WheelSystem.Enums
+namespace Controllers.Enums
 {
     public enum FortuneType
     {

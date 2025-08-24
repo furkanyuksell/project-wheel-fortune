@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Gameplay.WheelSystem.Enums;
+using Controllers.Enums;
 using Gameplay.WheelSystem.Scriptables;
 using UnityEngine;
 

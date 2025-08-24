@@ -3,7 +3,7 @@ using Gameplay.SlotSystem.Base;
 
 namespace Gameplay.SlotSystem.MonoBehaviours
 {
-    public class SlotPool : MultiTypeObjectPool<SlotHandler>
+    public class SlotPool : MultiTypeObjectPool<BaseSlotHandler>
     {
         
     }
