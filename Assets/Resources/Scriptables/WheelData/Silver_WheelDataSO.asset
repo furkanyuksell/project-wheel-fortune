@@ -15,14 +15,14 @@ MonoBehaviour:
   fortuneType: 2
   wheelSprite: {fileID: 21300000, guid: df98ddc455ce84f2cb2161d963f843cf, type: 3}
   wheelIndicatorSprite: {fileID: 21300000, guid: c31f2ef6ca29346a4862b64bd2965cde, type: 3}
-  isRiskFree: 0
+  isRiskFree: 1
   wheelContainableSliceCount: 8
   wheelItemContentList:
-  - {fileID: 11400000, guid: 16ecd66370481495bad239a850ee2fab, type: 2}
-  - {fileID: 11400000, guid: f567ee626ccdd4ba1a3a6060462aebb9, type: 2}
-  - {fileID: 11400000, guid: 65850487b2c784dbfa6b26db0058c8ad, type: 2}
-  - {fileID: 11400000, guid: 3d7eaca99e7dc40fb912c93e4f288fa6, type: 2}
-  - {fileID: 11400000, guid: ca6286b801c474cd796e64c835521bbe, type: 2}
-  - {fileID: 11400000, guid: d9a26c547d17049e5ba69407a6c1ff01, type: 2}
-  - {fileID: 11400000, guid: 3e5aebcd9ed824ed99a5072802773f09, type: 2}
+  - {fileID: 11400000, guid: 76fb5f3c524e84247a4e1593bc672c68, type: 2}
+  - {fileID: 11400000, guid: 9c6ddc46fcc3e48e3ad0ebdd6ebff883, type: 2}
+  - {fileID: 11400000, guid: e4e209a27bef84d41bc62dec7f3f804f, type: 2}
   - {fileID: 11400000, guid: 0e5f6dd0a188b46c7a906d397a2e52d3, type: 2}
+  - {fileID: 11400000, guid: 3e5aebcd9ed824ed99a5072802773f09, type: 2}
+  - {fileID: 11400000, guid: a1cc8d8d834574df7bb09149331171cb, type: 2}
+  - {fileID: 11400000, guid: 3222d0aeeadff4772a25e05086903199, type: 2}
+  - {fileID: 11400000, guid: bd123205a53124bb0891f5b28fd0f396, type: 2}

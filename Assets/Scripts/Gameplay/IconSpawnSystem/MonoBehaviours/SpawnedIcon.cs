@@ -67,14 +67,13 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
 
         private void TargetReachedCallback()
         {
-            // GameEvents.OnSpawnedIconReachedTarget?.Invoke(_type);
-            
-            _rectTransform.DOPunchScale(_systemData.targetReachedScalePower * Vector3.one,
-                    _systemData.targetReachedScaleDuration)
-                .SetEase(Ease.Linear)
-                .SetLink(gameObject)
-                .SetTarget(gameObject)
-                .OnComplete(ReturnToPool);
+            ReturnToPool();
+            // _rectTransform.DOPunchScale(_systemData.targetReachedScalePower * Vector3.one,
+            //         _systemData.targetReachedScaleDuration)
+            //     .SetEase(Ease.Linear)
+            //     .SetLink(gameObject)
+            //     .SetTarget(gameObject)
+            //     .OnComplete(ReturnToPool);
         }
         
         public override void ReturnToPool()
