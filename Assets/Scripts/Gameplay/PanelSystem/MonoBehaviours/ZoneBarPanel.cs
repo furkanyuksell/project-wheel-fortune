@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Controllers.Scriptables;
+using Core.EventBusSystem.Classes;
+using Core.EventBusSystem.Utils;
 using Gameplay.AnimationSystem.Classes;
 using Gameplay.PanelSystem.Base;
 using Gameplay.WheelSystem.Events;
@@ -7,6 +9,7 @@ using Gameplay.ZoneBarSystem;
 using Gameplay.ZoneBarSystem.Base;
 using Gameplay.ZoneBarSystem.MonoBehaviours;
 using Gameplay.ZoneBarSystem.Scriptables;
+using Managers.Events;
 using Managers.MonoBehaviours;
 using UnityEngine;
 
@@ -30,9 +33,11 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         #endregion
 
         #region Animator
-
         private ZoneBarAnimator _zoneBarAnimator;
-
+        #endregion
+        
+        #region Events
+        private EventBinding<IManagerEvent.OnAllItemsReturnedPool> _onAllItemsReturnedPoolBinding;
         #endregion
 
         #region Data
@@ -45,7 +50,21 @@ namespace Gameplay.PanelSystem.MonoBehaviours
             _zoneBarAnimator = new ZoneBarAnimator(_bgContent, _textContent, transform);
             CreateComponents();
         }
-
+        
+        protected override void Register(bool isActive)
+        {
+            base.Register(isActive);
+            if (isActive)
+            {
+                _onAllItemsReturnedPoolBinding = EventDispatcher
+                    .Subscribe<IManagerEvent.OnAllItemsReturnedPool>(OnAllItemsReturnedPool);
+            }
+            else
+            {
+                EventDispatcher.Unsubscribe(_onAllItemsReturnedPoolBinding);
+                _onAllItemsReturnedPoolBinding = null;
+            }
+        }
         private void CreateComponents()
         {
             for (int i = 0; i < _fortuneDataSO.totalZoneCount; i++)
@@ -67,6 +86,15 @@ namespace Gameplay.PanelSystem.MonoBehaviours
             (_zoneLevelItems[eventData.FortuneLevel-1].Item1 as ZoneBarBackgroundComponent)!
                 .UpdateBackground(_zoneBarDataSO.GetZoneBackground(eventData.FortuneType));
             _zoneBarAnimator.PlayBarAnimation();
+        }
+        
+        private void OnAllItemsReturnedPool()
+        {
+            foreach (var items in _zoneLevelItems)
+            {
+                items.Value.Item1.ReturnToPool();
+                items.Value.Item2.ReturnToPool();
+            }   
         }
     }
 }

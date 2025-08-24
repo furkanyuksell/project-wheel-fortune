@@ -1,8 +1,11 @@
 using System;
 using Controllers.Base;
 using Core.DISystem.MonoBehaviours;
+using Core.EventBusSystem.Classes;
+using Core.EventBusSystem.Utils;
 using Gameplay.PanelSystem.MonoBehaviours;
 using Gameplay.ZoneBarSystem.MonoBehaviours;
+using Managers.Events;
 using Managers.MonoBehaviours;
 using UnityEngine;
 
@@ -18,6 +21,7 @@ namespace Controllers.MonoBehaviours
         private ObjectPoolManager _objectPoolManager;
         private GameController _gameController;
         #endregion
+        
         protected override void ResolveDependencies()
         {
             _gameController = ResolveDependency<GameController>();

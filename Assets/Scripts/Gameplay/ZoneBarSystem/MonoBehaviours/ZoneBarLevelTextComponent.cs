@@ -13,11 +13,16 @@ namespace Gameplay.ZoneBarSystem.MonoBehaviours
         
         public override void Prepare(int i)
         {
+            base.Prepare(i);
             _zoneLevelText.SetText((i + 1).ToString());
         }
 
         #region Pool Implamentation
-        public override void ReturnToPool() => _zoneBarPool.ReturnItem(this);
+        public override void ReturnToPool()
+        {
+            _zoneBarPool.ReturnItem(this);
+        }
+
         public override int GetPoolId()
         {
             return (int) ZoneBarComponentType.Text;
