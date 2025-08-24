@@ -1,10 +1,13 @@
 using System.Collections;
+using Controllers.Enums;
 using Core.EventBusSystem.Utils;
 using Core.StateSystem.Enums;
 using Core.StateSystem.Events;
 using Gameplay.PanelSystem.Base;
+using Gameplay.PrizeBarSystem.Components;
 using Gameplay.PrizeBarSystem.MonoBehaviours;
 using Gameplay.SlotSystem.Classes;
+using Gameplay.WheelSystem.Events;
 using UnityEngine;
 
 namespace Gameplay.PanelSystem.MonoBehaviours
@@ -13,12 +16,19 @@ namespace Gameplay.PanelSystem.MonoBehaviours
     {
         [Header("References")]
         [SerializeField] private PrizeBarSlotListPresenter _presenter;
+        [SerializeField] private ExitButton _exitButton;
         
         public void Initialize()
         {
             _presenter.Initialize();
         }
-        
+
+        protected override void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData)
+        {
+            base.OnPanelPrepare(eventData);
+            _exitButton.gameObject.SetActive(eventData.FortuneType != FortuneType.Bronze);
+        }
+
         public void RewardGranted(RewardSlotData rewardSlotData)
         {
             _presenter.AddReward(rewardSlotData);
@@ -45,6 +55,14 @@ namespace Gameplay.PanelSystem.MonoBehaviours
                 }
             }
             
+            if (!_exitButton)
+            {
+                _exitButton = GetComponentInChildren<ExitButton>();
+                if (!_exitButton)
+                {
+                    Debug.LogError("ExitButton not found in children of PrizeBarPanel.");
+                }
+            }
         }
 #endif
 

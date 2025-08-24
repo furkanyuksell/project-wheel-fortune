@@ -12,6 +12,7 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
 {
     public class PrizeBarSlotListPresenter : BaseSlotListPresenter<PrizeSlotHandler>
     {
+        [Header("References")]
         [SerializeField] private Transform _slotParent;
         
         public override void Initialize()
