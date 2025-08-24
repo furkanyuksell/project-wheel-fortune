@@ -1,6 +1,6 @@
 namespace Gameplay.WheelSystem.Enums
 {
-    public enum WheelType
+    public enum FortuneType
     {
         None,
         Bronze,

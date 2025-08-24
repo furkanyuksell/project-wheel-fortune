@@ -12,7 +12,7 @@ namespace Gameplay.SlotSystem.Base
 
         protected override void Refresh()
         {
-            if (_model != null) return;
+            if (_model == null) return;
             
             _imgSlot.SetSprite(_model.rewardItem.icon);
         }

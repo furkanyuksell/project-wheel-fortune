@@ -204,7 +204,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920490557}
-  - component: {fileID: 8991085979244116028}
   m_Layer: 5
   m_Name: ui_slot_item_holder
   m_TagString: Untagged
@@ -232,18 +231,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8991085979244116028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920490556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42e353e357cb4324ac0d65fbb3de5874, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1138713624
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1720200787}
   - component: {fileID: 1720200789}
+  - component: {fileID: 8572886027843846132}
   - component: {fileID: 1720200788}
   m_Layer: 5
   m_Name: ui_image_spin_base_value
@@ -424,7 +412,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4073554327081260064}
   m_Father: {fileID: 1173667558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -441,6 +430,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720200786}
   m_CullTransparentMesh: 1
+--- !u!114 &8572886027843846132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720200786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12101c515db400db4ab1985462658ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1720200788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +472,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3672792884407544669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4073554327081260064}
+  m_Layer: 5
+  m_Name: ui_image_rect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4073554327081260064
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3672792884407544669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1720200787}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 450, y: 450}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &8094879714347851824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -568,6 +605,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}
+--- !u!1 &876704521407837398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8970154681620108518, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}
+  m_PrefabInstance: {fileID: 8094879714347851824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3204185151498570653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876704521407837398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e353e357cb4324ac0d65fbb3de5874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemHolder: {fileID: 920490557}
+  _wheelImage: {fileID: 8572886027843846132}
+  _wheelRadius: {fileID: 4073554327081260064}
 --- !u!1 &3905827811337411987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5071760739264609699, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}
@@ -586,6 +643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _content: {fileID: 6634960820114328425}
+  _presenter: {fileID: 3204185151498570653}
 --- !u!224 &6634960820114328425 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3189348432711297881, guid: 8d834a4db5542495ea503f88b5fc668a, type: 3}

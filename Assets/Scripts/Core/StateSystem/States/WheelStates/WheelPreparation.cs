@@ -1,11 +1,19 @@
+using Controllers.MonoBehaviours;
+using Core.EventBusSystem.Utils;
 using Core.StateSystem.Enums;
+using Gameplay.PanelSystem.Events;
 
 namespace Core.StateSystem.States.WheelStates
 {
     public class WheelPreparation : WheelState
     {
-        public WheelPreparation() : base(WheelStateType.Preparation)
+        #region DI
+        private readonly FortuneLevelController _fortuneLevelController;
+        #endregion
+        
+        public WheelPreparation(FortuneLevelController fortuneLevelController) : base(WheelStateType.Preparation)
         {
+            _fortuneLevelController = fortuneLevelController;
         }
 
         public override void Start()

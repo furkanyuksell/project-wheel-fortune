@@ -2,16 +2,41 @@ using System.Collections.Generic;
 using Gameplay.SlotSystem.Scriptables;
 using Gameplay.WheelSystem.Enums;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Gameplay.WheelSystem.Scriptables
 {
     [CreateAssetMenu(fileName = "WheelDataSO", menuName = "Data/Wheel/WheelDataSO", order = 0)]
     public class WheelDataSO : ScriptableObject
     {
-        public WheelType wheelType;
+        public FortuneType fortuneType;
         public Sprite wheelSprite;
         public Sprite wheelIndicatorSprite;
         public bool isRiskFree;
+        public int wheelContainableSliceCount;
         public List<BaseRewardSO> wheelItemContentList;
+        
+        
+        public BaseRewardSO GetRandomItem()
+        {
+            float totalRatio = 0;
+            foreach (var itemDataSo in wheelItemContentList)
+            {
+                totalRatio += itemDataSo.possibilityRatio;
+            }
+
+            float randomValue = Random.Range(0, totalRatio);
+            float currentRatio = 0;
+            foreach (var rewardSO in wheelItemContentList)
+            {
+                currentRatio += rewardSO.possibilityRatio;
+                if (randomValue <= currentRatio)
+                {
+                    return rewardSO;
+                }
+            }
+
+            return null;
+        }
     }
 }

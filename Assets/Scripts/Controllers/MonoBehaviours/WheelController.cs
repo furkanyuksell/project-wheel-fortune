@@ -6,6 +6,8 @@ using Core.StateSystem.Enums;
 using Core.StateSystem.Events;
 using Core.StateSystem.Interface;
 using Core.StateSystem.States.WheelStates;
+using Gameplay.PanelSystem.MonoBehaviours;
+using Gameplay.WheelSystem.Classes;
 using Gameplay.WheelSystem.MonoBehaviours;
 using UnityEngine;
 
@@ -13,8 +15,18 @@ namespace Controllers.MonoBehaviours
 {
     public class WheelController : BaseController, IStateController<WheelStateType>
     {
+        #region References
+        [Header("References")]
+        [SerializeField] private WheelPanel _wheelPanel;
+        #endregion
+        
+        #region Data
+        private WheelDataModel _wheelDataModel;
+        #endregion
+        
         #region Controllers
         private GameController _gameController;
+        private FortuneLevelController _fortuneLevelController;
         #endregion
 
         #region State Machine Implamentation
@@ -40,6 +52,7 @@ namespace Controllers.MonoBehaviours
         protected override void ResolveDependencies()
         {
             _gameController = ResolveDependency<GameController>();
+            _fortuneLevelController = ResolveDependency<FortuneLevelController>();
         }
 
         protected override void Register(bool isActive)
@@ -58,12 +71,19 @@ namespace Controllers.MonoBehaviours
 
         public override void Initialize()
         {
+            InitializeData();
             InitializeStates();
+        }
+
+        private void InitializeData()
+        {
+            _wheelDataModel = new WheelDataModel();
+            _wheelPanel.Initialize(_wheelDataModel);
         }
 
         public void InitializeStates()
         {
-            _preparationState = new WheelPreparation();
+            _preparationState = new WheelPreparation(_fortuneLevelController);
             _readyState = new WheelReadyState();
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
@@ -78,7 +98,7 @@ namespace Controllers.MonoBehaviours
             StateMachine.RegisterState(_finishedState);
         }
         
-        public void StartWheel()
+        public void PrepareWheel()
         {
             ChangeState(WheelStateType.Preparation);
         }
@@ -100,15 +120,15 @@ namespace Controllers.MonoBehaviours
         }
 
 #if UNITY_EDITOR
-        // private void OnValidate()
-        // {
-        //     if (_handler == null)
-        //     {
-        //         _handler = FindObjectOfType<WheelHandler>();
-        //         if (_handler == null) 
-        //             Debug.LogError("WheelHandler not found in the scene. Please ensure it is present.");
-        //     }
-        // }
+        private void OnValidate()
+        {
+            if (_wheelPanel == null)
+            {
+                _wheelPanel = FindObjectOfType<WheelPanel>();
+                if (_wheelPanel == null) 
+                    Debug.LogError("WheelHandler not found in the scene. Please ensure it is present.");
+            }
+        }
 #endif
     }
 }

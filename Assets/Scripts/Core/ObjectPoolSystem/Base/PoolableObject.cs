@@ -44,6 +44,12 @@ namespace Core.ObjectPoolSystem.Base
             gameObject.SetActive(true);
             IsActive = true;
         }
+        public virtual void OnActivate(Transform parent = null)
+        {
+            _cachedTransform.SetParent(parent ?? PoolParent, false);
+            gameObject.SetActive(true);
+            IsActive = true;
+        }
 
         public abstract int GetPoolId();
     }
