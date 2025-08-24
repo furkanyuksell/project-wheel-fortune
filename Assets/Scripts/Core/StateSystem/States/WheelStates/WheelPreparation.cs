@@ -2,6 +2,7 @@ using Controllers.MonoBehaviours;
 using Core.EventBusSystem.Utils;
 using Core.StateSystem.Classes;
 using Core.StateSystem.Enums;
+using DG.Tweening;
 using Gameplay.PanelSystem.Events;
 using Gameplay.WheelSystem.Events;
 
@@ -11,9 +12,10 @@ namespace Core.StateSystem.States.WheelStates
     {
         #region DI
         private readonly FortuneLevelController _fortuneLevelController;
+
         #endregion
         
-        public WheelPreparation(FortuneLevelController fortuneLevelController) : base(WheelStateType.Preparation)
+        public WheelPreparation(FortuneLevelController fortuneLevelController, WheelController wheelController) : base(WheelStateType.Preparation)
         {
             _fortuneLevelController = fortuneLevelController;
         }

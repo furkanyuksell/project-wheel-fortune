@@ -49,7 +49,7 @@ namespace Controllers.MonoBehaviours
             _prizeBarController.Initialize();
             _fortuneLevelController.Initialize();
             
-            _wheelController.PrepareWheel();
+            _wheelController.StartState();
         }
 
         protected override void ResolveDependencies()

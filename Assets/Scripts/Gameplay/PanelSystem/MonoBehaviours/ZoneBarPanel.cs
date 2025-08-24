@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Controllers.Scriptables;
+using Gameplay.AnimationSystem.Classes;
 using Gameplay.PanelSystem.Base;
+using Gameplay.WheelSystem.Events;
 using Gameplay.ZoneBarSystem;
 using Gameplay.ZoneBarSystem.Base;
 using Gameplay.ZoneBarSystem.MonoBehaviours;
@@ -25,6 +27,12 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         private ZoneBarPool _zoneBarPool;
         #endregion
 
+        #region Animator
+
+        private ZoneBarAnimator _zoneBarAnimator;
+
+        #endregion
+
         #region Data
         private readonly Dictionary<int, (ZoneBarComponent, ZoneBarComponent)> _zoneLevelItems = new();
         #endregion
@@ -32,6 +40,7 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         {
             _zoneBarPool = zoneBarPool;
             _fortuneDataSO = fortuneDataSO;
+            _zoneBarAnimator = new ZoneBarAnimator(_bgContent, _textContent, transform);
             CreateComponents();
         }
 
@@ -49,6 +58,11 @@ namespace Gameplay.PanelSystem.MonoBehaviours
             item.OnActivate(Vector3.zero, type == ZoneBarComponentType.Background ? _bgContent : _textContent);
             item.Prepare(i);
             return item;
+        }
+
+        protected override void OnPanelPrepare(IWheelEvent.OnWheelPreparation eventData)
+        {
+            _zoneBarAnimator.PlayBarAnimation();
         }
     }
 }

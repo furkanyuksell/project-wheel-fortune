@@ -86,7 +86,7 @@ namespace Controllers.MonoBehaviours
 
         public void InitializeStates()
         {
-            _preparationState = new WheelPreparation(_fortuneLevelController);
+            _preparationState = new WheelPreparation(_fortuneLevelController, this);
             _readyState = new WheelReadyState();
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
@@ -101,7 +101,7 @@ namespace Controllers.MonoBehaviours
             StateMachine.RegisterState(_finishedState);
         }
         
-        public void PrepareWheel()
+        public void StartState()
         {
             ChangeState(WheelStateType.Preparation);
         }

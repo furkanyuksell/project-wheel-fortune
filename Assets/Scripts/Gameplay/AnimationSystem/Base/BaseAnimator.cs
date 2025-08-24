@@ -17,5 +17,10 @@ namespace Gameplay.AnimationSystem.Base
         {
             return _transform.DOLocalRotate(rotation, duration, rotateMode).SetLink(_transform.gameObject).SetEase(ease);
         }
+        
+        protected Tween MoveXAnchorAnimation(RectTransform target, float position, float duration, Ease ease = Ease.Linear)
+        {
+            return target.DOAnchorPosX(position, duration).SetLink(target.gameObject).SetEase(ease);
+        }
     }
 }
