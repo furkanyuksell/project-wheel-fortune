@@ -88,6 +88,11 @@ namespace Gameplay.PanelSystem.MonoBehaviours
                 WheelStateType.Stopped, dataTransporter));
         }
 
+        public void Reset()
+        {
+            _presenter.ResetList();
+        }
+
 
 #if UNITY_EDITOR
         private void OnValidate()
@@ -111,5 +116,6 @@ namespace Gameplay.PanelSystem.MonoBehaviours
             }
         }
 #endif
+       
     }
 }

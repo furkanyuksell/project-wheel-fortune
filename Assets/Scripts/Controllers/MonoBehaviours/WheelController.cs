@@ -91,7 +91,7 @@ namespace Controllers.MonoBehaviours
             _spinningState = new WheelSpinningState();
             _stoppedState = new WheelStoppedState();
             _collectingState = new WheelCollectingState(_prizeBarController);
-            _finishedState = new WheelFinishedState();
+            _finishedState = new WheelFinishedState(_fortuneLevelController, this);
 
             StateMachine.RegisterState(_preparationState);
             StateMachine.RegisterState(_readyState);
@@ -104,6 +104,11 @@ namespace Controllers.MonoBehaviours
         public void PrepareWheel()
         {
             ChangeState(WheelStateType.Preparation);
+        }
+        
+        public void ResetWheel()
+        {
+            _wheelPanel.Reset();
         }
         
         private void OnChangeState(IStateMachineEvent<WheelStateType>.OnChangeState eventData)

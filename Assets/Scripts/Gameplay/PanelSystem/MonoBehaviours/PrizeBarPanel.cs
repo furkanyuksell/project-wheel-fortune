@@ -1,3 +1,7 @@
+using System.Collections;
+using Core.EventBusSystem.Utils;
+using Core.StateSystem.Enums;
+using Core.StateSystem.Events;
 using Gameplay.PanelSystem.Base;
 using Gameplay.PrizeBarSystem.MonoBehaviours;
 using Gameplay.SlotSystem.Classes;
@@ -18,6 +22,14 @@ namespace Gameplay.PanelSystem.MonoBehaviours
         public void RewardGranted(RewardSlotData rewardSlotData)
         {
             _presenter.AddReward(rewardSlotData);
+
+            StartCoroutine(FinishedState());
+        }
+
+        private IEnumerator FinishedState()
+        {
+            yield return null; // for preventing immediate state change
+            EventDispatcher.Raise(new IStateMachineEvent<WheelStateType>.OnChangeState(WheelStateType.Finished));
         }
 
 #if UNITY_EDITOR

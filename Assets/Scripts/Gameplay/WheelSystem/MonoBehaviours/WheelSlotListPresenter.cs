@@ -91,6 +91,13 @@ namespace Gameplay.WheelSystem.MonoBehaviours
             return (null, 0);   
         }
 
+        public void ResetList()
+        {
+            foreach (var wheelSlotHandler in _slots) 
+                wheelSlotHandler.ReturnToPool();
+            _slots.Clear();
+        }
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
