@@ -6,3 +6,7 @@
 <img width="826" height="448" alt="Ekran Resmi 2025-08-25 03 44 33" src="https://github.com/user-attachments/assets/ed9f54fd-0219-4812-9e95-9eba34617a15" />
 
 
+<br><br>
+
+https://github.com/user-attachments/assets/1188c742-62e9-4c51-b030-d5794b40e676
+
