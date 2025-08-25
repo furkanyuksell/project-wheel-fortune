@@ -49,7 +49,7 @@ namespace Core.ComponentSystem.Components
             _button.interactable = value;
         }
         
-        protected virtual void SetText(string text)
+        public virtual void SetText(string text)
         {
             _txtContent.text = text;
         }

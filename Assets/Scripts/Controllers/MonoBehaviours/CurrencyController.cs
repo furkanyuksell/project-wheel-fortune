@@ -67,6 +67,23 @@ namespace Controllers.MonoBehaviours
             Currency += amount;
             _currencyPanel.SetCurrencyText(Currency.ToString());
         }
+        public void SpendCurrency(int amount)
+        {
+            if (Currency >= amount)
+            {
+                Currency -= amount;
+                _currencyPanel.SetCurrencyText(Currency.ToString());
+            }
+            else
+            {
+                Debug.LogWarning("Not enough currency to spend.");
+            }
+        }
+        
+        public bool IsEnoughCurrency(int reviveDataReviveCost)
+        {
+            return Currency >= reviveDataReviveCost;
+        }
 
 #if UNITY_EDITOR
         private void OnValidate()

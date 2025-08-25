@@ -12,6 +12,7 @@ namespace Core.DISystem.MonoBehaviours
         [SerializeField] private ZoneBarController _zoneBarController; 
         [SerializeField] private FortuneLevelController _fortuneLevelController;
         [SerializeField] private CurrencyController _currencyController;
+        [SerializeField] private ReviveController _reviveController;
 
         protected override void Initialize()
         {
@@ -21,6 +22,7 @@ namespace Core.DISystem.MonoBehaviours
             RegisterInstance(InitializeContextDependent(_zoneBarController));
             RegisterInstance(InitializeContextDependent(_fortuneLevelController));
             RegisterInstance(InitializeContextDependent(_currencyController));
+            RegisterInstance(InitializeContextDependent(_reviveController));
             base.Initialize();
         }
     }
