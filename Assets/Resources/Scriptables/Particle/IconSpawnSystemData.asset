@@ -18,8 +18,8 @@ MonoBehaviour:
   targetReachedScalePower: 0.4
   targetReachedScaleDuration: 0.3
   maxIconSpawnCount: 10
-  iconsMinSeperationRange: 250
-  iconsMaxSeperationRange: 400
+  iconsMinSeperationRange: 100
+  iconsMaxSeperationRange: 150
   iconsSeperationDurationMultiplier: 0.3
   iconsMovementDuration: 0.65
   animatedCurrencyUpdateDuration: 0.65

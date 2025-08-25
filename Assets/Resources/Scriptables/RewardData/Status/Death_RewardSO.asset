@@ -17,5 +17,5 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: c07b9925416c64a60853515798271429, type: 3}
     rewardType: 1
   rarityType: 0
-  dropRate: 88.6
+  dropRate: 88.4
   minMaxCount: {x: 1, y: 1}
