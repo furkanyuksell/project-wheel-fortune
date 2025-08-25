@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Core.BaseClasses;
 using Core.DISystem.MonoBehaviours;
@@ -21,6 +22,7 @@ namespace IconSpawnSystem
 
         #region Privates
         private Vector2 _defaultIconSpawnPosition;
+        private Action _onComplete;
         #endregion
 
         #region Events
@@ -54,10 +56,11 @@ namespace IconSpawnSystem
 
         private void OnRequestIconSpawn(ISpawnIconEvent.OnSpawnIcon eventData)
         {
-            HandleIconSpawn(eventData.Sprite, eventData.SpawnUIPosition, eventData.TargetUIPosition);
+            _onComplete = eventData.OnComplete;
+            HandleIconSpawn(eventData.Sprite, eventData.SpawnUIPosition, eventData.TargetTransform);
         }
 
-        private void HandleIconSpawn(Sprite sprite, Vector3 spawnUIPosition, Vector3 targetUIPosition)
+        private void HandleIconSpawn(Sprite sprite, Vector3 spawnUIPosition, Transform targetTransform)
         {
             if (_systemData == null)
             {
@@ -83,8 +86,8 @@ namespace IconSpawnSystem
                 {
                     spawnUIPosition = spawnUIPosition == Vector3.zero ? _defaultIconSpawnPosition : spawnUIPosition;
 
-                    if (!SpawnIcon(sprite, spawnUIPosition, targetUIPosition, seperationDuration,
-                            targetSeperationRange))
+                    if (!SpawnIcon(sprite, spawnUIPosition, targetTransform, seperationDuration,
+                            targetSeperationRange, i == 0 ? _onComplete : null))
                     {
                         Debug.LogWarning($"Failed to spawn icon at index {i}");
                     }
@@ -94,8 +97,8 @@ namespace IconSpawnSystem
             }
         }
 
-        private bool SpawnIcon(Sprite sprite, Vector3 spawnUIPosition, Vector3 targetUIPosition, float seperationDuration,
-            float targetSeperationRange)
+        private bool SpawnIcon(Sprite sprite, Vector3 spawnUIPosition, Transform targetTransform, float seperationDuration,
+            float targetSeperationRange, Action onComplete = null)
         {
             if (_iconsHolder == null)
             {
@@ -110,8 +113,8 @@ namespace IconSpawnSystem
                 return false;
             }
 
-            item.InitializeItem(sprite,spawnUIPosition, targetUIPosition, _iconsHolder, seperationDuration,
-                targetSeperationRange, _systemData.iconsMovementDuration);
+            item.InitializeItem(sprite,spawnUIPosition, targetTransform, _iconsHolder, seperationDuration,
+                targetSeperationRange, _systemData.iconsMovementDuration, onComplete);
             return true;
         }
     }

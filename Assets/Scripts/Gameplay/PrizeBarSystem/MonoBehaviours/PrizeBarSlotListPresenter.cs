@@ -3,6 +3,7 @@ using System.Collections;
 using Controllers.Events;
 using Core.BaseClasses;
 using Core.EventBusSystem.Utils;
+using DG.Tweening;
 using Gameplay.IconSpawnSystem.Events;
 using Gameplay.SlotSystem.Base;
 using Gameplay.SlotSystem.Classes;
@@ -25,11 +26,7 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
 
         public void AddReward(RewardSlotData rewardSlotData)
         {
-            if (CheckRewardExists(rewardSlotData, out var baseSlotHandler))
-            {
-                baseSlotHandler.UpdateCount(rewardSlotData.itemCount);
-            }
-            else
+            if (!CheckRewardExists(rewardSlotData, out var baseSlotHandler))
             {
                 baseSlotHandler = _slotPool.GetPooledItem((int)_slotType);
                 baseSlotHandler.Prepare(_slotParent, rewardSlotData);
@@ -59,10 +56,9 @@ namespace Gameplay.PrizeBarSystem.MonoBehaviours
             EventDispatcher.Raise(new ISpawnIconEvent.OnSpawnIcon(
                 rewardSlotData.itemData.icon,
                 Vector3.zero,
-                baseSlotHandler.iconTarget.transform.position
-            ));
+                baseSlotHandler.iconTarget.transform, 
+                ()=> baseSlotHandler.UpdateCount(rewardSlotData.itemCount)));
         }
-
         public void AddCurrencies()
         {
             int amount = 0;

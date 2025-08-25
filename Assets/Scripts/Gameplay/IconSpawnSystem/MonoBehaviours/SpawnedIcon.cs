@@ -21,6 +21,7 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
         private RectTransform _rectTransform;
         
         private SpawnableIconPool _iconPool;
+        private Action _onComplete;
 
         protected override void Awake()
         { 
@@ -33,7 +34,8 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
             _iconPool = ProjectContext.Instance.Resolve<ObjectPoolManager>().IconPool;
         }
 
-        public void InitializeItem(Sprite sprite, Vector3 spawnUIPosition, Vector3 targetPos, Transform parent, float seperationDuration, float seperationRange, float movementDurationAfterSeperation)
+        public void InitializeItem(Sprite sprite, Vector3 spawnUIPosition, Transform targetTransform, Transform parent,
+            float seperationDuration, float seperationRange, float movementDurationAfterSeperation, Action onComplete = null)
         {
             transform.SetParent(parent);
             _iconImage.SetSprite(sprite);
@@ -42,6 +44,7 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
             _rectTransform.position = spawnUIPosition;
             _rectTransform.localScale = Vector3.one;
             _rectTransform.localRotation = Quaternion.Euler(Random.Range(0f, _systemData.initialRotationRandomizerValue) * Vector3.forward);
+            _onComplete = onComplete;
 
             _rectTransform.DOScale(_systemData.initialScalePower * Vector3.one, seperationDuration * _systemData.seperationPowerPercent)
                 .SetLoops(2, LoopType.Yoyo)
@@ -56,7 +59,7 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
 
                     dtTarget
                         .Join(_rectTransform.DOLocalRotate(Vector3.zero, movementDurationAfterSeperation).SetEase(Ease.InBack))
-                        .Join(_rectTransform.DOMove(targetPos, movementDurationAfterSeperation).SetEase(Ease.InBack));
+                        .Join(_rectTransform.DOMove(targetTransform.position, movementDurationAfterSeperation).SetEase(Ease.InBack));
 
                     dtTarget
                         .SetLink(gameObject)
@@ -78,6 +81,7 @@ namespace Gameplay.IconSpawnSystem.MonoBehaviours
         
         public override void ReturnToPool()
         {
+            _onComplete?.Invoke();
             _iconPool.ReturnItem(this);
         }
 

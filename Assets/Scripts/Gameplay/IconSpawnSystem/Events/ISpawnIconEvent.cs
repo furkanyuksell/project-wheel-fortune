@@ -1,3 +1,4 @@
+using System;
 using Core.EventBusSystem.Interfaces;
 using UnityEngine;
 
@@ -9,12 +10,14 @@ namespace Gameplay.IconSpawnSystem.Events
         {
             public Sprite Sprite { get; }
             public Vector3 SpawnUIPosition { get; }
-            public Vector3 TargetUIPosition { get; }
-            public OnSpawnIcon(Sprite sprite, Vector3 spawnUIPosition, Vector3 targetUIPosition)
+            public Transform TargetTransform { get; }
+            public Action OnComplete { get; set; }
+            public OnSpawnIcon(Sprite sprite, Vector3 spawnUIPosition, Transform targetTransform, Action onComplete = null)
             {
                 Sprite = sprite;
                 SpawnUIPosition = spawnUIPosition;
-                TargetUIPosition = targetUIPosition;
+                TargetTransform = targetTransform;
+                OnComplete = onComplete;
             }
         }
         
