@@ -34,19 +34,22 @@ namespace Core.ObjectPoolSystem.Base
             ResetState();
             gameObject.SetActive(false);
             IsActive = false;
-            _cachedTransform.SetParent(PoolParent, false);
+            _cachedTransform.SetParent(PoolParent);
+            _cachedTransform.localScale = Vector3.one;
         }
 
         public virtual void OnActivate(Vector3 position, Transform parent = null)
         {
             _cachedTransform.SetParent(parent ?? PoolParent);
+            _cachedTransform.localScale = Vector3.one;
             _cachedTransform.position = position;
             gameObject.SetActive(true);
             IsActive = true;
         }
         public virtual void OnActivate(Transform parent = null)
         {
-            _cachedTransform.SetParent(parent ?? PoolParent, false);
+            _cachedTransform.SetParent(parent ?? PoolParent);
+            _cachedTransform.localScale = Vector3.one;
             gameObject.SetActive(true);
             IsActive = true;
         }
